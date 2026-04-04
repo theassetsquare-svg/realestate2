@@ -79,6 +79,75 @@
     <li>서울성모병원 등 대형 의료기관 인접</li>
   </ul>
 
+  <!-- PRICE SIMULATOR -->
+  <div class="simulator" id="simulator">
+    <h3>월 납입금 계산기</h3>
+    <div class="sim-row"><label for="sim-price">분양가 (만원)</label><input type="number" id="sim-price" placeholder="예: 251500" value="251500"></div>
+    <div class="sim-row"><label for="sim-down">자기자본 (%)</label><input type="number" id="sim-down" value="30" min="0" max="100"></div>
+    <div class="sim-row"><label for="sim-rate">대출금리 (%)</label><input type="number" id="sim-rate" value="3.5" step="0.1"></div>
+    <div class="sim-row"><label for="sim-years">상환기간</label><select id="sim-years"><option value="20">20년</option><option value="30" selected>30년</option><option value="40">40년</option></select></div>
+    <button class="sim-btn" id="sim-calc">월 납입금 계산하기</button>
+    <div class="sim-result" style="display:none">
+      <div class="monthly-label">예상 월 납입금</div>
+      <div class="monthly"><span id="sim-monthly">0</span>만원</div>
+      <dl class="breakdown"><dt>대출금액</dt><dd><span id="sim-loan-amt">0</span>만원</dd><dt>자기자본</dt><dd><span id="sim-down-amt">0</span>만원</dd><dt>총 이자</dt><dd><span id="sim-total-interest">0</span>만원</dd><dt>상환방식</dt><dd>원리금균등</dd></dl>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="comparison">
+    <h3>이 현장 vs 주변 현장 비교</h3>
+    <table class="comp-table">
+      <thead><tr><th>항목</th><th class="highlight">오티에르 반포</th><th>아크로 드 서초</th><th>래미안원베일리</th></tr></thead>
+      <tbody>
+        <tr><td>위치</td><td class="highlight">서초구 잠원동</td><td>서초구 서초동</td><td>서초구 반포동</td></tr>
+        <tr><td>세대수</td><td class="highlight">251세대</td><td>1,161세대</td><td>2,990세대</td></tr>
+        <tr><td>84㎡ 분양가</td><td class="highlight">25.1~27.5억</td><td>분상제(59㎡ 17.9억~)</td><td>시세 45억+</td></tr>
+        <tr><td>교통</td><td class="highlight">3·7·9호선 초역세권</td><td>2·3호선 서초역</td><td>3·9호선 잠원역</td></tr>
+        <tr><td>입주시기</td><td class="highlight">즉시입주 가능</td><td>2029년 2월</td><td>입주완료</td></tr>
+        <tr><td>시공사</td><td class="highlight">-</td><td>DL이앤씨</td><td>삼성물산</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <h3>분양 → 입주 타임라인</h3>
+    <div class="tl-list">
+      <div class="tl-item done"><div class="tl-date">2026.04</div><div class="tl-title">후분양 공고</div><div class="tl-desc">후분양 방식으로 실물 확인 가능</div></div>
+      <div class="tl-item current"><div class="tl-date">2026.04.10</div><div class="tl-title">청약 접수</div><div class="tl-desc">특별공급 및 일반공급 청약</div></div>
+      <div class="tl-item"><div class="tl-date">2026.04</div><div class="tl-title">당첨자 발표</div><div class="tl-desc">청약홈에서 당첨 여부 확인</div></div>
+      <div class="tl-item"><div class="tl-date">2026.05</div><div class="tl-title">정당 계약</div><div class="tl-desc">계약금 납부 및 분양계약서 작성</div></div>
+      <div class="tl-item"><div class="tl-date">즉시</div><div class="tl-title">입주 가능</div><div class="tl-desc">후분양 단지로 계약 후 즉시 입주 가능</div></div>
+    </div>
+  </div>
+
+  <!-- NEIGHBORHOOD -->
+  <div class="neighborhood">
+    <h3>주변 인프라</h3>
+    <div class="nb-grid">
+      <div class="nb-item"><div class="nb-icon">🚇</div><div class="nb-info"><strong>잠원역·고속터미널역</strong><span>3·7·9호선 도보 5분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏫</div><div class="nb-info"><strong>반포초등학교</strong><span>도보 7분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏥</div><div class="nb-info"><strong>서울성모병원</strong><span>차량 8분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🛒</div><div class="nb-info"><strong>신세계백화점·센트럴시티</strong><span>도보 10분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🌳</div><div class="nb-info"><strong>반포한강공원</strong><span>도보 10분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏫</div><div class="nb-info"><strong>세화고등학교</strong><span>도보 8분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">📚</div><div class="nb-info"><strong>서초구립반포도서관</strong><span>도보 10분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">☕</div><div class="nb-info"><strong>서래마을 카페거리</strong><span>도보 12분</span></div></div>
+    </div>
+  </div>
+
+  <!-- EXPERT QUOTE -->
+  <div class="expert-quote">
+    <h3>전문가가 본 이 현장의 가치</h3>
+    <p>반포라는 서울 최고의 주거지에서 분양가상한제가 적용된 후분양 단지로, 국평 기준 약 20억 원의 시세차익이 기대됩니다.</p>
+    <p>후분양 방식이므로 실물을 직접 확인한 뒤 계약할 수 있어 리스크가 최소화되며, 즉시 입주가 가능한 점이 큰 강점입니다.</p>
+    <p>3·7·9호선 초역세권에 반포 생활권의 모든 프리미엄을 누릴 수 있는 2026년 최고의 분양 기회 중 하나입니다.</p>
+    <div class="expert-name">— 더에셋스퀘어 부동산분양 분석팀</div>
+  </div>
+
+  <!-- FAQ -->
+  <h3>자주 묻는 질문</h3>
   <details class="faq-item">
     <summary>후분양이면 실물을 직접 볼 수 있나요?</summary>
     <div class="faq-answer">네, 오티에르 반포는 후분양 단지이므로 실제 건축물을 직접 확인한 후 청약 및 계약을 진행할 수 있습니다. 조망, 채광, 마감 품질 등을 사전에 확인할 수 있어 선분양 대비 불확실성이 크게 줄어드는 장점이 있습니다.</div>
@@ -91,6 +160,21 @@
     <summary>청약 일정은 언제인가요?</summary>
     <div class="faq-answer">오티에르 반포의 청약은 4월 10일에 예정되어 있습니다. 분양가상한제 적용 단지이므로 청약 자격 요건과 전매제한 조건 등을 사전에 꼼꼼히 확인하시기 바랍니다.</div>
   </details>
+  <details class="faq-item">
+    <summary>후분양이면 중도금 대출이 필요 없나요?</summary>
+    <div class="faq-answer">후분양 단지는 공사가 상당 부분 완료된 상태에서 분양하므로 중도금 납부 횟수가 줄거나 없을 수 있습니다. 계약금과 잔금 위주로 자금 계획을 세울 수 있어 금융 부담이 선분양 대비 경감됩니다. 정확한 납부 조건은 모집공고를 확인하세요.</div>
+  </details>
+  <details class="faq-item">
+    <summary>전매제한 기간은 어떻게 되나요?</summary>
+    <div class="faq-answer">분양가상한제 적용 단지이므로 전매제한이 적용됩니다. 소유권이전등기일까지 또는 일정 기간 전매가 제한되며, 정확한 기간은 모집공고를 통해 확인하시기 바랍니다.</div>
+  </details>
+
+  <!-- ALERT CTA -->
+  <div class="alert-cta">
+    <h3>이 현장 가격 변동 시 알림받기</h3>
+    <p>오티에르 반포의 청약 결과, 계약 일정, 잔여세대 정보를 가장 먼저 받아보세요</p>
+    <a href="https://man-tjn.pages.dev/" class="alert-cta-btn">알림 신청하기 →</a>
+  </div>
 
   <div class="detail-cta-box">
     <p>오티에르 반포에 대해 더 자세한 상담이 필요하신가요?</p>

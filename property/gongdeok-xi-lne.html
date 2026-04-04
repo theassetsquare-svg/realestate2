@@ -57,19 +57,107 @@
   <h3>분양 일정 및 문의 안내</h3>
   <p>공덕역자이르네는 2026년 4월 분양 예정으로, 세부 청약 일정과 분양가는 모집공고를 통해 공개될 예정입니다. 178세대 소규모 단지 특성상 희소성이 높아 청약 경쟁이 예상됩니다. 분양 관련 문의는 1660-4050으로 하실 수 있습니다. 4중 역세권 소형 아파트라는 희소한 조건을 갖춘 단지인 만큼, 관심 있는 분들은 사전에 청약 자격 요건을 확인하시고 준비하시길 권장합니다.</p>
 
-  <div class="faq-item">
-    <h3>공덕역자이르네 위치가 어디인가요?</h3>
-    <p class="faq-answer">서울 마포구 도화동 마포로1구역 재개발 부지이며, 5·6호선·경의중앙선·공항철도 공덕역 도보권의 4중 역세권입니다.</p>
+  <!-- PRICE SIMULATOR -->
+  <div class="simulator" id="simulator">
+    <h3>월 납입금 계산기</h3>
+    <div class="sim-row"><label for="sim-price">분양가 (만원)</label><input type="number" id="sim-price" placeholder="예: 150000" value="150000"></div>
+    <div class="sim-row"><label for="sim-down">자기자본 (%)</label><input type="number" id="sim-down" value="30" min="0" max="100"></div>
+    <div class="sim-row"><label for="sim-rate">대출금리 (%)</label><input type="number" id="sim-rate" value="3.5" step="0.1"></div>
+    <div class="sim-row"><label for="sim-years">상환기간</label><select id="sim-years"><option value="20">20년</option><option value="30" selected>30년</option><option value="40">40년</option></select></div>
+    <button class="sim-btn" id="sim-calc">월 납입금 계산하기</button>
+    <div class="sim-result" style="display:none">
+      <div class="monthly-label">예상 월 납입금</div>
+      <div class="monthly"><span id="sim-monthly">0</span>만원</div>
+      <dl class="breakdown">
+        <dt>대출금액</dt><dd><span id="sim-loan-amt">0</span>만원</dd>
+        <dt>자기자본</dt><dd><span id="sim-down-amt">0</span>만원</dd>
+        <dt>총 이자</dt><dd><span id="sim-total-interest">0</span>만원</dd>
+        <dt>상환방식</dt><dd>원리금균등</dd>
+      </dl>
+    </div>
   </div>
 
-  <div class="faq-item">
-    <h3>공덕역자이르네 세대 구성은 어떻게 되나요?</h3>
-    <p class="faq-answer">전용 48㎡ 36세대, 52㎡ 36세대, 59㎡ 106세대로 총 178세대입니다. 소형 면적 중심이며, 1~2층에 상업시설이 복합됩니다.</p>
+  <!-- COMPARISON TABLE -->
+  <div class="comparison">
+    <h3>이 현장 vs 주변 현장 비교</h3>
+    <table class="comp-table">
+      <thead><tr><th>항목</th><th class="highlight">공덕역자이르네</th><th>덕수궁롯데캐슬136</th><th>래미안엘라비네</th></tr></thead>
+      <tbody>
+        <tr><td>위치</td><td class="highlight">마포구 도화동</td><td>중구 순화동</td><td>마포구 신공덕동</td></tr>
+        <tr><td>세대수</td><td class="highlight">178세대</td><td>102세대+오피스텔34실</td><td>약 1,000세대</td></tr>
+        <tr><td>59㎡ 분양가</td><td class="highlight">약 15억(예상)</td><td>약 12억(예상)</td><td>약 14억(시세)</td></tr>
+        <tr><td>교통</td><td class="highlight">공덕역 4중역세권</td><td>시청역·서울역</td><td>공덕역 인접</td></tr>
+        <tr><td>입주시기</td><td class="highlight">미정</td><td>2027년 4월</td><td>입주완료</td></tr>
+        <tr><td>시공사</td><td class="highlight">자이S&amp;D</td><td>롯데건설</td><td>삼성물산</td></tr>
+      </tbody>
+    </table>
   </div>
 
-  <div class="faq-item">
-    <h3>공덕역자이르네 분양 문의는 어디로 하나요?</h3>
-    <p class="faq-answer">분양 문의 전화번호는 1660-4050입니다. 2026년 4월 분양 예정이며, 세부 일정은 모집공고를 통해 확인하시기 바랍니다.</p>
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <h3>분양 → 입주 타임라인</h3>
+    <div class="tl-list">
+      <div class="tl-item current"><div class="tl-date">2026.04</div><div class="tl-title">분양 예정</div><div class="tl-desc">모집공고 및 견본주택 오픈 예정</div></div>
+      <div class="tl-item"><div class="tl-date">2026.04~05</div><div class="tl-title">청약 접수</div><div class="tl-desc">특별공급 및 1·2순위 청약</div></div>
+      <div class="tl-item"><div class="tl-date">2026.05</div><div class="tl-title">당첨자 발표</div><div class="tl-desc">청약홈에서 당첨 여부 확인</div></div>
+      <div class="tl-item"><div class="tl-date">2026.05~06</div><div class="tl-title">정당 계약</div><div class="tl-desc">계약금 납부 및 분양계약서 작성</div></div>
+      <div class="tl-item"><div class="tl-date">2026~2028</div><div class="tl-title">공사 진행</div><div class="tl-desc">중도금 6회 납부 (대출 가능)</div></div>
+      <div class="tl-item"><div class="tl-date">2028~2029</div><div class="tl-title">입주 시작</div><div class="tl-desc">잔금 납부 및 입주 (사전점검 포함)</div></div>
+    </div>
+  </div>
+
+  <!-- NEIGHBORHOOD -->
+  <div class="neighborhood">
+    <h3>주변 인프라</h3>
+    <div class="nb-grid">
+      <div class="nb-item"><div class="nb-icon">🚇</div><div class="nb-info"><strong>공덕역 (4중역세권)</strong><span>5·6호선·경의중앙·공항철도</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏛️</div><div class="nb-info"><strong>마포구청</strong><span>도보 10분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🛒</div><div class="nb-info"><strong>공덕시장</strong><span>도보 5분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏢</div><div class="nb-info"><strong>여의도 업무지구</strong><span>1정거장</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏥</div><div class="nb-info"><strong>마포구 보건소</strong><span>도보 8분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏫</div><div class="nb-info"><strong>도화초등학교</strong><span>도보 5분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">✈️</div><div class="nb-info"><strong>인천공항</strong><span>공항철도 직행</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🌳</div><div class="nb-info"><strong>마포구민체육센터</strong><span>도보 10분</span></div></div>
+    </div>
+  </div>
+
+  <!-- EXPERT QUOTE -->
+  <div class="expert-quote">
+    <h3>전문가가 본 이 현장의 가치</h3>
+    <p>공덕역 4중 역세권이라는 서울에서도 손꼽히는 교통 입지가 이 단지의 최대 강점입니다.</p>
+    <p>178세대 소규모 희소성과 소형 면적 중심 구성이 1~2인 가구 실수요 및 임대 투자에 최적입니다.</p>
+    <p>마포구 재개발 호재와 여의도 직주근접 수요가 맞물려 중장기 자산가치 상승이 기대됩니다.</p>
+    <div class="expert-name">— 더에셋스퀘어 부동산분양 분석팀</div>
+  </div>
+
+  <!-- FAQ -->
+  <h3>자주 묻는 질문</h3>
+  <details class="faq-item">
+    <summary>공덕역자이르네 위치가 어디인가요?</summary>
+    <div class="faq-answer">서울 마포구 도화동 마포로1구역 재개발 부지이며, 5·6호선·경의중앙선·공항철도 공덕역 도보권의 4중 역세권입니다.</div>
+  </details>
+  <details class="faq-item">
+    <summary>공덕역자이르네 세대 구성은 어떻게 되나요?</summary>
+    <div class="faq-answer">전용 48㎡ 36세대, 52㎡ 36세대, 59㎡ 106세대로 총 178세대입니다. 소형 면적 중심이며, 1~2층에 상업시설이 복합됩니다.</div>
+  </details>
+  <details class="faq-item">
+    <summary>공덕역자이르네 분양 문의는 어디로 하나요?</summary>
+    <div class="faq-answer">분양 문의 전화번호는 1660-4050입니다. 2026년 4월 분양 예정이며, 세부 일정은 모집공고를 통해 확인하시기 바랍니다.</div>
+  </details>
+  <details class="faq-item">
+    <summary>청약 자격 조건은?</summary>
+    <div class="faq-answer">1순위 조건은 청약통장 가입 24개월 이상, 납입 24회 이상입니다. 서울 거주자 우선 배정이며, 특별공급은 신혼부부·다자녀·생애최초·노부모부양 등 별도 소득 기준이 적용됩니다.</div>
+  </details>
+  <details class="faq-item">
+    <summary>중도금 대출은 어떻게 되나요?</summary>
+    <div class="faq-answer">분양가의 약 60%까지 중도금 대출이 가능하며, 6회에 걸쳐 납부합니다. 금리와 한도는 협약 은행 조건에 따라 달라지므로 계약 시 상세히 확인하세요.</div>
+  </details>
+
+  <!-- ALERT CTA -->
+  <div class="alert-cta">
+    <h3>이 현장 가격 변동 시 알림받기</h3>
+    <p>공덕역자이르네의 분양가 변동, 잔여세대, 청약 결과를 가장 먼저 받아보세요</p>
+    <a href="https://man-tjn.pages.dev/" class="alert-cta-btn">알림 신청하기 →</a>
   </div>
 
 </div></section>

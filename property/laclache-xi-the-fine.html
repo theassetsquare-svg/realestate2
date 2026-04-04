@@ -79,18 +79,113 @@
   <h3>투자 가치 및 전망</h3>
   <p>라클라체자이드파인은 노량진뉴타운 첫 분양 단지라는 점에서 상징적 의미가 큽니다. 뉴타운 개발이 진행됨에 따라 주변 환경이 크게 개선될 것이며, 이에 따른 자산가치 상승이 기대됩니다. GS건설과 SK에코플랜트라는 대형 건설사의 공동 시공으로 시공 품질에 대한 신뢰도 높으며, 약 4억 원의 시세차익이 예상되어 실거주와 투자 모두에 적합한 단지로 평가받고 있습니다. 여의도와의 뛰어난 접근성은 직주근접 수요를 확보하는 데 큰 강점입니다.</p>
 
+  <!-- PRICE SIMULATOR -->
+  <div class="simulator" id="simulator">
+    <h3>월 납입금 계산기</h3>
+    <div class="sim-row"><label for="sim-price">분양가 (만원)</label><input type="number" id="sim-price" placeholder="예: 228730" value="228730"></div>
+    <div class="sim-row"><label for="sim-down">자기자본 (%)</label><input type="number" id="sim-down" value="30" min="0" max="100"></div>
+    <div class="sim-row"><label for="sim-rate">대출금리 (%)</label><input type="number" id="sim-rate" value="3.5" step="0.1"></div>
+    <div class="sim-row"><label for="sim-years">상환기간</label><select id="sim-years"><option value="20">20년</option><option value="30" selected>30년</option><option value="40">40년</option></select></div>
+    <button class="sim-btn" id="sim-calc">월 납입금 계산하기</button>
+    <div class="sim-result" style="display:none">
+      <div class="monthly-label">예상 월 납입금</div>
+      <div class="monthly"><span id="sim-monthly">0</span>만원</div>
+      <dl class="breakdown">
+        <dt>대출금액</dt><dd><span id="sim-loan-amt">0</span>만원</dd>
+        <dt>자기자본</dt><dd><span id="sim-down-amt">0</span>만원</dd>
+        <dt>총 이자</dt><dd><span id="sim-total-interest">0</span>만원</dd>
+        <dt>상환방식</dt><dd>원리금균등</dd>
+      </dl>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="comparison">
+    <h3>이 현장 vs 주변 현장 비교</h3>
+    <table class="comp-table">
+      <thead><tr><th>항목</th><th class="highlight">라클라체자이드파인</th><th>아크로리버스카이</th><th>써밋더힐</th></tr></thead>
+      <tbody>
+        <tr><td>위치</td><td class="highlight">동작구 노량진</td><td>동작구 노량진</td><td>동작구 흑석</td></tr>
+        <tr><td>세대수</td><td class="highlight">1,499세대</td><td>미정</td><td>1,515세대</td></tr>
+        <tr><td>84㎡ 분양가</td><td class="highlight">22.8~25.8억</td><td>추후 공개</td><td>약 28억(예상)</td></tr>
+        <tr><td>교통</td><td class="highlight">1·9호선 노량진역</td><td>1·9호선 노량진역</td><td>9호선 흑석역</td></tr>
+        <tr><td>입주시기</td><td class="highlight">2028년 11월</td><td>미정</td><td>미정</td></tr>
+        <tr><td>시공사</td><td class="highlight">GS건설·SK에코</td><td>DL이앤씨</td><td>대우건설</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <h3>분양 → 입주 타임라인</h3>
+    <div class="tl-list">
+      <div class="tl-item done"><div class="tl-date">2026.04.03</div><div class="tl-title">모집공고 발표</div><div class="tl-desc">입주자모집공고 및 견본주택 오픈</div></div>
+      <div class="tl-item current"><div class="tl-date">2026.04.13~16</div><div class="tl-title">청약 접수</div><div class="tl-desc">특별공급 13일 / 1순위 14~15일 / 2순위 16일</div></div>
+      <div class="tl-item"><div class="tl-date">2026.04.22</div><div class="tl-title">당첨자 발표</div><div class="tl-desc">청약홈에서 당첨 여부 확인</div></div>
+      <div class="tl-item"><div class="tl-date">2026.05.04~06</div><div class="tl-title">정당 계약</div><div class="tl-desc">계약금 납부 및 분양계약서 작성</div></div>
+      <div class="tl-item"><div class="tl-date">2026~2028</div><div class="tl-title">공사 진행</div><div class="tl-desc">중도금 6회 납부 (대출 가능)</div></div>
+      <div class="tl-item"><div class="tl-date">2028.11</div><div class="tl-title">입주 시작</div><div class="tl-desc">잔금 납부 및 입주 (사전점검 포함)</div></div>
+    </div>
+  </div>
+
+  <!-- NEIGHBORHOOD -->
+  <div class="neighborhood">
+    <h3>주변 인프라</h3>
+    <div class="nb-grid">
+      <div class="nb-item"><div class="nb-icon">🚇</div><div class="nb-info"><strong>노량진역</strong><span>1·9호선 도보 8분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏫</div><div class="nb-info"><strong>노량진초등학교</strong><span>도보 5분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏥</div><div class="nb-info"><strong>보라매병원</strong><span>차량 10분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🛒</div><div class="nb-info"><strong>노량진수산시장</strong><span>도보 10분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🌳</div><div class="nb-info"><strong>한강시민공원</strong><span>도보 15분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏫</div><div class="nb-info"><strong>중앙대학교</strong><span>차량 5분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">📚</div><div class="nb-info"><strong>동작구립도서관</strong><span>도보 8분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏞️</div><div class="nb-info"><strong>노들섬</strong><span>도보 12분</span></div></div>
+    </div>
+  </div>
+
+  <!-- EXPERT QUOTE -->
+  <div class="expert-quote">
+    <h3>전문가가 본 이 현장의 가치</h3>
+    <p>노량진뉴타운 첫 분양이라는 상징성과 9호선 급행 여의도 1정거장이라는 압도적 입지가 핵심입니다.</p>
+    <p>GS건설·SK에코플랜트 공동 시공으로 브랜드 신뢰도가 높고, 약 4억 원의 시세차익이 예상됩니다.</p>
+    <p>실거주와 투자 모두 적합한 단지로, 2026년 서울 분양 시장에서 가장 주목할 현장 중 하나입니다.</p>
+    <div class="expert-name">— 더에셋스퀘어 부동산분양 분석팀</div>
+  </div>
+
+  <!-- FAQ -->
+  <h3>자주 묻는 질문</h3>
+  <details class="faq-item">
+    <summary>라클라체자이드파인 시세차익 4억은 어떻게 계산된 건가요?</summary>
+    <div class="faq-answer">인근 노량진 일대 신축 아파트 시세와 분양가를 비교한 추정치입니다. 노량진뉴타운 개발 완료 후 주변 시세가 상승하면 차익은 더 커질 수 있으나, 부동산 시장 상황에 따라 변동 가능합니다. 반드시 전문가 상담 후 투자 결정을 하세요.</div>
+  </details>
   <details class="faq-item">
     <summary>노량진뉴타운 첫 분양이라는데, 향후 추가 분양도 있나요?</summary>
-    <div class="faq-answer">라클라체자이드파인은 노량진뉴타운의 첫 번째 분양 단지입니다. 노량진뉴타운은 여러 구역으로 나뉘어 개발이 진행될 예정이므로 향후 추가 분양이 이루어질 것으로 예상됩니다. 다만 첫 분양 단지는 일반적으로 가장 낮은 분양가가 적용되어 가격 메리트가 큰 편입니다.</div>
+    <div class="faq-answer">네. 노량진뉴타운은 여러 구역으로 개발이 진행될 예정이므로 향후 추가 분양이 이루어집니다. 다만 첫 분양 단지는 일반적으로 가장 낮은 분양가가 적용되어 가격 메리트가 큰 편입니다.</div>
   </details>
   <details class="faq-item">
     <summary>견본주택은 언제 어디서 방문할 수 있나요?</summary>
-    <div class="faq-answer">견본주택은 4월 3일 오픈 예정입니다. 정확한 위치는 모집공고를 통해 확인하실 수 있으며, 방문 전 사전 예약이 필요할 수 있으니 공식 홈페이지를 참고하시기 바랍니다.</div>
+    <div class="faq-answer">견본주택은 4월 3일 오픈 예정입니다. 정확한 위치는 모집공고를 통해 확인하실 수 있으며, 방문 전 사전 예약이 필요할 수 있으니 공식 홈페이지를 참고하세요.</div>
+  </details>
+  <details class="faq-item">
+    <summary>청약 자격 조건은?</summary>
+    <div class="faq-answer">1순위 조건은 청약통장 가입 24개월 이상, 납입 24회 이상입니다. 서울 거주자 우선 배정이며, 특별공급은 신혼부부·다자녀·생애최초·노부모부양 등 별도 소득 기준이 적용됩니다.</div>
+  </details>
+  <details class="faq-item">
+    <summary>중도금 대출은 어떻게 되나요?</summary>
+    <div class="faq-answer">분양가의 약 60%까지 중도금 대출이 가능하며, 6회에 걸쳐 납부합니다. 금리와 한도는 협약 은행 조건에 따라 달라지므로 계약 시 상세히 확인하세요.</div>
   </details>
 
+  <!-- ALERT CTA -->
+  <div class="alert-cta">
+    <h3>이 현장 가격 변동 시 알림받기</h3>
+    <p>라클라체자이드파인의 분양가 변동, 잔여세대, 청약 결과를 가장 먼저 받아보세요</p>
+    <a href="https://man-tjn.pages.dev/" class="alert-cta-btn">알림 신청하기 →</a>
+  </div>
+
   <div class="detail-cta-box">
-    <p>라클라체자이드파인에 대해 더 자세한 상담이 필요하신가요?</p>
-    <a href="https://man-tjn.pages.dev/" class="detail-cta-btn">무료 AI 분양상담 받기</a>
+    <h3>라클라체자이드파인 상담이 필요하신가요?</h3>
+    <p>무료 AI 상담으로 청약 자격, 자금 계획, 당첨 가능성을 한 번에 확인하세요</p>
+    <a href="https://man-tjn.pages.dev/" class="detail-cta-btn">더에셋스퀘어에서 더 자세히 보기 →</a>
   </div>
 </div></section>
 

@@ -79,6 +79,74 @@
     <li>노원구 학원가 및 교육 인프라</li>
   </ul>
 
+  <!-- PRICE SIMULATOR -->
+  <div class="simulator" id="simulator">
+    <h3>월 납입금 계산기</h3>
+    <div class="sim-row"><label for="sim-price">분양가 (만원)</label><input type="number" id="sim-price" placeholder="예: 103000" value="103000"></div>
+    <div class="sim-row"><label for="sim-down">자기자본 (%)</label><input type="number" id="sim-down" value="30" min="0" max="100"></div>
+    <div class="sim-row"><label for="sim-rate">대출금리 (%)</label><input type="number" id="sim-rate" value="3.5" step="0.1"></div>
+    <div class="sim-row"><label for="sim-years">상환기간</label><select id="sim-years"><option value="20">20년</option><option value="30" selected>30년</option><option value="40">40년</option></select></div>
+    <button class="sim-btn" id="sim-calc">월 납입금 계산하기</button>
+    <div class="sim-result" style="display:none">
+      <div class="monthly-label">예상 월 납입금</div>
+      <div class="monthly"><span id="sim-monthly">0</span>만원</div>
+      <dl class="breakdown"><dt>대출금액</dt><dd><span id="sim-loan-amt">0</span>만원</dd><dt>자기자본</dt><dd><span id="sim-down-amt">0</span>만원</dd><dt>총 이자</dt><dd><span id="sim-total-interest">0</span>만원</dd><dt>상환방식</dt><dd>원리금균등</dd></dl>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="comparison">
+    <h3>이 현장 vs 주변 현장 비교</h3>
+    <table class="comp-table">
+      <thead><tr><th>항목</th><th class="highlight">서울원 아이파크</th><th>래미안 엘라비네</th><th>장위 푸르지오</th></tr></thead>
+      <tbody>
+        <tr><td>위치</td><td class="highlight">노원구 월계동</td><td>강서구 방화동</td><td>성북구 장위동</td></tr>
+        <tr><td>세대수</td><td class="highlight">1,856세대</td><td>557세대</td><td>약 3,000세대</td></tr>
+        <tr><td>84㎡ 분양가</td><td class="highlight">평당 3,800~3,900만</td><td>평당 약 5,170만</td><td>추후 공개</td></tr>
+        <tr><td>교통</td><td class="highlight">1호선·GTX-C 광운대역</td><td>9호선 신방화역</td><td>6호선 돌곶이역</td></tr>
+        <tr><td>입주시기</td><td class="highlight">2028년 7월</td><td>미정</td><td>미정</td></tr>
+        <tr><td>시공사</td><td class="highlight">HDC현대산업개발</td><td>삼성물산</td><td>대우건설</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <h3>분양 → 입주 타임라인</h3>
+    <div class="tl-list">
+      <div class="tl-item done"><div class="tl-date">2026</div><div class="tl-title">분양 진행중</div><div class="tl-desc">모집공고 및 청약 접수 진행</div></div>
+      <div class="tl-item current"><div class="tl-date">2026</div><div class="tl-title">계약 진행</div><div class="tl-desc">계약금 납부 및 분양계약서 작성</div></div>
+      <div class="tl-item"><div class="tl-date">2026~2028</div><div class="tl-title">공사 진행</div><div class="tl-desc">중도금 납부 (대출 가능)</div></div>
+      <div class="tl-item"><div class="tl-date">2028.07</div><div class="tl-title">입주 시작</div><div class="tl-desc">잔금 납부 및 입주 (사전점검 포함)</div></div>
+    </div>
+  </div>
+
+  <!-- NEIGHBORHOOD -->
+  <div class="neighborhood">
+    <h3>주변 인프라</h3>
+    <div class="nb-grid">
+      <div class="nb-item"><div class="nb-icon">🚇</div><div class="nb-info"><strong>광운대역</strong><span>1호선·GTX-C 도보 1분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏫</div><div class="nb-info"><strong>광운대학교</strong><span>도보 5분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏥</div><div class="nb-info"><strong>을지대학교 노원캠퍼스</strong><span>차량 10분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🛒</div><div class="nb-info"><strong>이마트 월계점</strong><span>도보 8분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🌳</div><div class="nb-info"><strong>북서울꿈의숲</strong><span>차량 10분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏫</div><div class="nb-info"><strong>서울과학기술대학교</strong><span>차량 5분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">📚</div><div class="nb-info"><strong>노원구립도서관</strong><span>차량 8분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏞️</div><div class="nb-info"><strong>중랑천</strong><span>도보 10분</span></div></div>
+    </div>
+  </div>
+
+  <!-- EXPERT QUOTE -->
+  <div class="expert-quote">
+    <h3>전문가가 본 이 현장의 가치</h3>
+    <p>광운대역 복합개발이라는 대규모 프로젝트로 동북권의 새로운 랜드마크가 될 47층 초고층 단지입니다.</p>
+    <p>GTX-C 노선 정차 예정으로 삼성역까지 15분대 접근이 가능해지며, 교통 혁신에 따른 자산가치 상승이 기대됩니다.</p>
+    <p>10.3억부터 시작하는 합리적 분양가와 업무·상업·주거 복합개발의 시너지로, 실거주와 투자 모두에 매력적인 단지입니다.</p>
+    <div class="expert-name">— 더에셋스퀘어 부동산분양 분석팀</div>
+  </div>
+
+  <!-- FAQ -->
+  <h3>자주 묻는 질문</h3>
   <details class="faq-item">
     <summary>GTX-C 노선은 언제 개통되나요?</summary>
     <div class="faq-answer">GTX-C 노선은 현재 사업이 진행 중이며, 광운대역에 정차할 예정입니다. 개통 시 삼성역까지 약 15분, 수원까지 약 30분대로 이동이 가능해져 서울원 아이파크의 교통 접근성이 획기적으로 개선될 것으로 기대됩니다. 정확한 개통 시기는 사업 진행 상황에 따라 달라질 수 있습니다.</div>
@@ -87,6 +155,25 @@
     <summary>복합개발이란 정확히 어떤 의미인가요?</summary>
     <div class="faq-answer">복합개발은 주거, 상업, 업무 등 다양한 용도의 시설을 하나의 단지 안에 함께 조성하는 개발 방식입니다. 서울원 아이파크는 1,856세대의 주거시설과 함께 쇼핑몰, 오피스 등이 함께 들어서 단지 내에서 다양한 생활 서비스를 이용할 수 있습니다. 이는 생활 편의성을 높이고 자산가치 상승에도 긍정적인 영향을 미칩니다.</div>
   </details>
+  <details class="faq-item">
+    <summary>47층 초고층인데 조망은 어떤가요?</summary>
+    <div class="faq-answer">47층 초고층 설계로 상층부 세대는 북한산, 도봉산 등 사방으로 탁 트인 조망을 확보할 수 있습니다. 동북권에서 유례를 찾기 어려운 스카이라인을 형성하게 되며, 고층부에는 스카이 라운지 등 프리미엄 커뮤니티 시설도 계획되어 있습니다.</div>
+  </details>
+  <details class="faq-item">
+    <summary>동부간선도로 지하화 사업은 어떤 영향을 주나요?</summary>
+    <div class="faq-answer">동부간선도로 지하화가 완료되면 지상부에 대규모 공원과 녹지가 조성됩니다. 이는 단지 주변 주거환경을 크게 개선하고, 소음과 분진 문제를 해소하여 자산가치 상승에 긍정적인 영향을 미칠 것으로 전망됩니다.</div>
+  </details>
+  <details class="faq-item">
+    <summary>중도금 대출은 가능한가요?</summary>
+    <div class="faq-answer">분양가의 약 60%까지 중도금 대출이 가능하며, 6회에 걸쳐 납부합니다. 금리와 한도는 협약 은행 조건에 따라 달라지므로 계약 시 상세히 확인하세요.</div>
+  </details>
+
+  <!-- ALERT CTA -->
+  <div class="alert-cta">
+    <h3>이 현장 가격 변동 시 알림받기</h3>
+    <p>서울원 아이파크의 분양가 변동, 잔여세대, 계약 일정을 가장 먼저 받아보세요</p>
+    <a href="https://man-tjn.pages.dev/" class="alert-cta-btn">알림 신청하기 →</a>
+  </div>
 
   <div class="detail-cta-box">
     <p>서울원 아이파크에 대해 더 자세한 상담이 필요하신가요?</p>

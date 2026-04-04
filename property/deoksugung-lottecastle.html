@@ -57,19 +57,106 @@
   <h3>분양 일정 및 투자 가치</h3>
   <p>덕수궁 롯데캐슬 136은 4월 견본주택 오픈을 앞두고 있으며, 이후 본격적인 분양 절차가 진행될 예정입니다. 서울 중구 도심에 신축으로 공급되는 주거 상품 자체가 희소하며, 비규제라는 조건까지 갖추어 높은 관심이 예상됩니다. 2027년 4월 입주 예정으로 비교적 빠른 입주가 가능한 점도 장점입니다. 분양가 및 청약 세부 조건은 견본주택 오픈 시 공개될 예정이므로, 관심 있는 분들은 일정을 확인하시기 바랍니다.</p>
 
-  <div class="faq-item">
-    <h3>덕수궁 롯데캐슬 136은 아파트인가요?</h3>
-    <p class="faq-answer">아파트형주택 59㎡ 102세대와 오피스텔 118~119㎡ 34실로 구성된 복합 단지입니다. 비규제 상품으로 실거주 의무가 없고 완화된 청약 조건이 적용됩니다.</p>
+  <!-- PRICE SIMULATOR -->
+  <div class="simulator" id="simulator">
+    <h3>월 납입금 계산기</h3>
+    <div class="sim-row"><label for="sim-price">분양가 (만원)</label><input type="number" id="sim-price" placeholder="예: 120000" value="120000"></div>
+    <div class="sim-row"><label for="sim-down">자기자본 (%)</label><input type="number" id="sim-down" value="30" min="0" max="100"></div>
+    <div class="sim-row"><label for="sim-rate">대출금리 (%)</label><input type="number" id="sim-rate" value="3.5" step="0.1"></div>
+    <div class="sim-row"><label for="sim-years">상환기간</label><select id="sim-years"><option value="20">20년</option><option value="30" selected>30년</option><option value="40">40년</option></select></div>
+    <button class="sim-btn" id="sim-calc">월 납입금 계산하기</button>
+    <div class="sim-result" style="display:none">
+      <div class="monthly-label">예상 월 납입금</div>
+      <div class="monthly"><span id="sim-monthly">0</span>만원</div>
+      <dl class="breakdown">
+        <dt>대출금액</dt><dd><span id="sim-loan-amt">0</span>만원</dd>
+        <dt>자기자본</dt><dd><span id="sim-down-amt">0</span>만원</dd>
+        <dt>총 이자</dt><dd><span id="sim-total-interest">0</span>만원</dd>
+        <dt>상환방식</dt><dd>원리금균등</dd>
+      </dl>
+    </div>
   </div>
 
-  <div class="faq-item">
-    <h3>덕수궁 롯데캐슬 136 입주 시기는 언제인가요?</h3>
-    <p class="faq-answer">2027년 4월 입주 예정입니다. 4월 견본주택 오픈 후 본격적인 분양 절차가 진행됩니다.</p>
+  <!-- COMPARISON TABLE -->
+  <div class="comparison">
+    <h3>이 현장 vs 주변 현장 비교</h3>
+    <table class="comp-table">
+      <thead><tr><th>항목</th><th class="highlight">덕수궁롯데캐슬136</th><th>공덕역자이르네</th><th>써밋더힐</th></tr></thead>
+      <tbody>
+        <tr><td>위치</td><td class="highlight">중구 순화동</td><td>마포구 도화동</td><td>동작구 흑석</td></tr>
+        <tr><td>세대수</td><td class="highlight">102세대+오피스텔34실</td><td>178세대</td><td>1,515세대</td></tr>
+        <tr><td>59㎡ 분양가</td><td class="highlight">약 12억(예상)</td><td>약 15억(예상)</td><td>20.4~21.8억(예상)</td></tr>
+        <tr><td>교통</td><td class="highlight">시청역·서울역</td><td>공덕역 4중역세권</td><td>9호선 흑석역</td></tr>
+        <tr><td>입주시기</td><td class="highlight">2027년 4월</td><td>미정</td><td>미정</td></tr>
+        <tr><td>시공사</td><td class="highlight">롯데건설</td><td>자이S&amp;D</td><td>대우건설</td></tr>
+      </tbody>
+    </table>
   </div>
 
-  <div class="faq-item">
-    <h3>덕수궁 롯데캐슬 136 세대 구성은 어떻게 되나요?</h3>
-    <p class="faq-answer">아파트형주택은 59㎡A 34세대, 59㎡B 34세대, 59㎡C 34세대 총 102세대이며, 오피스텔은 118㎡ 17실, 119㎡ 17실 총 34실입니다. 지하 7층~지상 20층, 1개 동 규모입니다.</p>
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <h3>분양 → 입주 타임라인</h3>
+    <div class="tl-list">
+      <div class="tl-item current"><div class="tl-date">2026.04</div><div class="tl-title">견본주택 오픈</div><div class="tl-desc">견본주택 개관 및 분양 상담 시작</div></div>
+      <div class="tl-item"><div class="tl-date">2026.04~05</div><div class="tl-title">청약 접수</div><div class="tl-desc">특별공급 및 1·2순위 청약</div></div>
+      <div class="tl-item"><div class="tl-date">2026.05</div><div class="tl-title">당첨자 발표</div><div class="tl-desc">청약홈에서 당첨 여부 확인</div></div>
+      <div class="tl-item"><div class="tl-date">2026.05~06</div><div class="tl-title">정당 계약</div><div class="tl-desc">계약금 납부 및 분양계약서 작성</div></div>
+      <div class="tl-item"><div class="tl-date">2027.04</div><div class="tl-title">입주 시작</div><div class="tl-desc">잔금 납부 및 입주 (사전점검 포함)</div></div>
+    </div>
+  </div>
+
+  <!-- NEIGHBORHOOD -->
+  <div class="neighborhood">
+    <h3>주변 인프라</h3>
+    <div class="nb-grid">
+      <div class="nb-item"><div class="nb-icon">🚇</div><div class="nb-info"><strong>시청역</strong><span>1·2호선 도보 5분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🚇</div><div class="nb-info"><strong>서울역</strong><span>1·4호선·KTX 도보 10분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏛️</div><div class="nb-info"><strong>덕수궁</strong><span>도보 3분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🛒</div><div class="nb-info"><strong>남대문시장</strong><span>도보 8분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏢</div><div class="nb-info"><strong>광화문 업무지구</strong><span>도보 10분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🏥</div><div class="nb-info"><strong>서울대병원</strong><span>차량 10분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🌳</div><div class="nb-info"><strong>서울광장</strong><span>도보 5분</span></div></div>
+      <div class="nb-item"><div class="nb-icon">🎭</div><div class="nb-info"><strong>명동·을지로</strong><span>도보 10분</span></div></div>
+    </div>
+  </div>
+
+  <!-- EXPERT QUOTE -->
+  <div class="expert-quote">
+    <h3>전문가가 본 이 현장의 가치</h3>
+    <p>서울 중구 도심 한복판 신축이라는 극도의 희소성이 이 단지의 핵심 가치입니다.</p>
+    <p>비규제 상품으로 실거주 의무 없이 투자 가능하며, 고소득 전문직·외국인 임대 수요가 풍부합니다.</p>
+    <p>2027년 4월 빠른 입주와 롯데건설 프리미엄이 실수요·투자 양면에서 매력적인 상품입니다.</p>
+    <div class="expert-name">— 더에셋스퀘어 부동산분양 분석팀</div>
+  </div>
+
+  <!-- FAQ -->
+  <h3>자주 묻는 질문</h3>
+  <details class="faq-item">
+    <summary>덕수궁 롯데캐슬 136은 아파트인가요?</summary>
+    <div class="faq-answer">아파트형주택 59㎡ 102세대와 오피스텔 118~119㎡ 34실로 구성된 복합 단지입니다. 비규제 상품으로 실거주 의무가 없고 완화된 청약 조건이 적용됩니다.</div>
+  </details>
+  <details class="faq-item">
+    <summary>덕수궁 롯데캐슬 136 입주 시기는 언제인가요?</summary>
+    <div class="faq-answer">2027년 4월 입주 예정입니다. 4월 견본주택 오픈 후 본격적인 분양 절차가 진행됩니다.</div>
+  </details>
+  <details class="faq-item">
+    <summary>덕수궁 롯데캐슬 136 세대 구성은 어떻게 되나요?</summary>
+    <div class="faq-answer">아파트형주택은 59㎡A 34세대, 59㎡B 34세대, 59㎡C 34세대 총 102세대이며, 오피스텔은 118㎡ 17실, 119㎡ 17실 총 34실입니다. 지하 7층~지상 20층, 1개 동 규모입니다.</div>
+  </details>
+  <details class="faq-item">
+    <summary>비규제 상품이란 무엇인가요?</summary>
+    <div class="faq-answer">실거주 의무가 없고 전매 제한이 완화된 상품입니다. 일반 아파트 대비 청약 조건이 완화되어 투자 목적의 매수자도 진입이 용이합니다.</div>
+  </details>
+  <details class="faq-item">
+    <summary>오피스텔과 아파트형주택의 차이는?</summary>
+    <div class="faq-answer">아파트형주택(59㎡)은 주거용으로 주택 수에 포함되며, 오피스텔(118~119㎡)은 업무시설로 주택 수에 포함되지 않습니다. 세금·대출 조건이 다르므로 개별 상담을 권장합니다.</div>
+  </details>
+
+  <!-- ALERT CTA -->
+  <div class="alert-cta">
+    <h3>이 현장 가격 변동 시 알림받기</h3>
+    <p>덕수궁 롯데캐슬 136의 분양가 변동, 잔여세대, 청약 결과를 가장 먼저 받아보세요</p>
+    <a href="https://man-tjn.pages.dev/" class="alert-cta-btn">알림 신청하기 →</a>
   </div>
 
 </div></section>
