@@ -1,20 +1,29 @@
-# 더에셋스퀘어 — 부동산분양 2026년 4월 기준 실제 현장
+# 더에셋스퀘어 — 부동산분양 2026년 실제 현장만
+> 2026년 4월 기준 실제 분양 중이거나 분양 예정인 부동산분양 현장만 수록합니다. 청약홈·호갱노노·부동산114 검증 데이터. 분양문의 1666-6838.
 
-> 2026년 4월 기준 실제 분양 중이거나 분양 예정인 부동산분양 현장만 수록합니다. 청약홈·호갱노노·부동산114 검증 데이터.
+## Pages
+- [홈페이지](https://realestate2-71e.pages.dev/): 2026년 부동산분양 추천 현장 모음
+- [아파트분양](https://realestate2-71e.pages.dev/apartment.html): 서울·수도권 아파트 청약 가능한 곳
+- [오피스텔분양](https://realestate2-71e.pages.dev/officetel.html): 역세권 수익형 오피스텔
+- [상가분양](https://realestate2-71e.pages.dev/store.html): 유동인구 검증된 상가 투자
+- [지식산업센터분양](https://realestate2-71e.pages.dev/knowledge-center.html): 기업 입주 세제혜택
+- [토지분양](https://realestate2-71e.pages.dev/land.html): LH·SH 공공택지 매각
+- [산업단지분양](https://realestate2-71e.pages.dev/industrial.html): 국가산업단지 입주기업 모집
 
-## 아파트분양 현장 (2026년 4월 기준)
-- [아크로 드 서초](https://realestate2-71e.pages.dev/property/acro-de-seocho.html): 서초구 재건축 1,161세대 역대최고 경쟁률
-- [라클라체자이드파인](https://realestate2-71e.pages.dev/property/laclache-xi-the-fine.html): 노량진뉴타운 첫 분양 1,499세대
-- [오티에르 반포](https://realestate2-71e.pages.dev/property/otier-banpo.html): 잠원동 후분양 251세대 국평 26억
-- [서울원 아이파크](https://realestate2-71e.pages.dev/property/seoul-one-ipark.html): 광운대역 복합개발 1,856세대
-- [더샵 신길센트럴시티](https://realestate2-71e.pages.dev/property/thesharp-singil.html): 영등포 2,054세대 대단지
-- [래미안 엘라비네](https://realestate2-71e.pages.dev/property/raemian-elravine.html): 강서구 첫 래미안 557세대
-- [써밋더힐](https://realestate2-71e.pages.dev/property/summit-the-hill.html): 흑석뉴타운 1,515세대
-- [공덕역자이르네](https://realestate2-71e.pages.dev/property/gongdeok-xi-lne.html): 마포 4중역세권 178세대
-- [덕수궁 롯데캐슬 136](https://realestate2-71e.pages.dev/property/deoksugung-lottecastle.html): 중구 비규제 102세대
-- [한화포레나 부산당리](https://realestate2-71e.pages.dev/property/hanwha-forena-dangri.html): 부산 사하구 543세대
+## 아파트분양 상세 현장
+- [아크로 드 서초](https://realestate2-71e.pages.dev/property/acro-de-seocho.html): 서울 서초구, 1,161세대, 역대최고 1099:1 경쟁률
+- [라클라체자이드파인](https://realestate2-71e.pages.dev/property/laclache-xi-the-fine.html): 서울 동작구 노량진뉴타운 첫 분양, 1,499세대
+- [오티에르 반포](https://realestate2-71e.pages.dev/property/otier-banpo.html): 서울 서초구 잠원동, 후분양 251세대, 국평 26억
+- [서울원 아이파크](https://realestate2-71e.pages.dev/property/seoul-one-ipark.html): 서울 노원구, 광운대역 47층 복합개발, 1,856세대
+- [더샵 신길센트럴시티](https://realestate2-71e.pages.dev/property/thesharp-singil.html): 서울 영등포구, 2,054세대, 신풍역 도보5분
+- [래미안 엘라비네](https://realestate2-71e.pages.dev/property/raemian-elravine.html): 서울 강서구, 강서구 첫 래미안, 557세대
+- [써밋더힐](https://realestate2-71e.pages.dev/property/summit-the-hill.html): 서울 동작구 흑석뉴타운, 1,515세대
+- [공덕역자이르네](https://realestate2-71e.pages.dev/property/gongdeok-xi-lne.html): 서울 마포구, 4중 역세권, 178세대
+- [덕수궁 롯데캐슬 136](https://realestate2-71e.pages.dev/property/deoksugung-lottecastle.html): 서울 중구, 비규제 아파트형주택, 102세대
+- [한화포레나 부산당리](https://realestate2-71e.pages.dev/property/hanwha-forena-dangri.html): 부산 사하구, 더블역세권, 543세대
 
 ## 운영 주체
 더에셋스퀘어 — 부동산분양 전문 플랫폼
 메인 사이트: https://man-tjn.pages.dev/
 분양문의: 1666-6838
+이메일: theassetsquare@gmail.com
