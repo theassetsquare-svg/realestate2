@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://realestate2.pages.dev/sitemap.xml

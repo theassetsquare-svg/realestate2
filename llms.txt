@@ -1,0 +1,14 @@
+# 더에셋스퀘어 — 고양일산 부동산분양 정보
+
+> 고양시 일산 지역 부동산분양 전문 정보 사이트. 아파트, 오피스텔, 상가, 지식산업센터, 토지, 산업단지 분양 정보를 전문가 시각으로 분석합니다.
+
+## 주요 페이지
+
+- [홈페이지](https://realestate2.pages.dev/): 고양일산 부동산분양 전체 현장 목록 및 예산별 빠른 확인
+- [킨텍스 원시티](https://realestate2.pages.dev/kintex-onecity.html): 킨텍스 원시티 아파트 분양 상세 분석
+- [고양창릉 A-2블록](https://realestate2.pages.dev/changneung-a2.html): 고양창릉 신도시 A-2블록 아파트 분양 정보
+- [킨텍스 꿈에그린](https://realestate2.pages.dev/kintex-greenpark.html): 킨텍스역 오피스텔 수익률 분석
+
+## 운영 주체
+더에셋스퀘어 — 부동산분양 전문 플랫폼
+메인 사이트: https://man-tjn.pages.dev/
