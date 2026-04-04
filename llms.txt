@@ -3,26 +3,26 @@
 > 고양시 일산 지역 부동산분양 전문 정보 사이트. 아파트, 오피스텔, 상가, 지식산업센터, 토지, 산업단지 분양 정보를 전문가 시각으로 분석합니다.
 
 ## 카테고리 페이지
-- [아파트분양](https://realestate2.pages.dev/apartment.html): 일산아파트분양 현장 목록
-- [오피스텔분양](https://realestate2.pages.dev/officetel.html): 일산오피스텔분양 수익률 분석
-- [상가분양](https://realestate2.pages.dev/store.html): 일산상가분양 투자 가치 비교
-- [지식산업센터](https://realestate2.pages.dev/knowledge-center.html): 일산지식산업센터분양 입주 조건
-- [토지분양](https://realestate2.pages.dev/land.html): 일산토지분양 개발 호재 지역
-- [산업단지](https://realestate2.pages.dev/industrial.html): 일산산업단지분양 기업 입주
+- [아파트분양](https://realestate2-71e.pages.dev/apartment.html): 일산아파트분양 현장 목록
+- [오피스텔분양](https://realestate2-71e.pages.dev/officetel.html): 일산오피스텔분양 수익률 분석
+- [상가분양](https://realestate2-71e.pages.dev/store.html): 일산상가분양 투자 가치 비교
+- [지식산업센터](https://realestate2-71e.pages.dev/knowledge-center.html): 일산지식산업센터분양 입주 조건
+- [토지분양](https://realestate2-71e.pages.dev/land.html): 일산토지분양 개발 호재 지역
+- [산업단지](https://realestate2-71e.pages.dev/industrial.html): 일산산업단지분양 기업 입주
 
 ## 주요 분양 현장
-- [킨텍스 원시티](https://realestate2.pages.dev/property/kintex-one-city.html): GTX-A 킨텍스역 아파트
-- [고양창릉 A-2블록](https://realestate2.pages.dev/property/changneung-a2.html): 3기 신도시 첫 분양
-- [일산 힐스테이트](https://realestate2.pages.dev/property/ilsan-hillstate.html): 정발산역 프리미엄 아파트
-- [킨텍스 꿈에그린](https://realestate2.pages.dev/property/kintex-dream-green.html): 대화역 오피스텔
-- [일산 더샵](https://realestate2.pages.dev/property/ilsan-thesharp.html): 마두역 오피스텔
-- [대화역 한양수자인](https://realestate2.pages.dev/property/daehwa-hanyang.html): 초역세권 오피스텔
-- [킨텍스 프라임상가](https://realestate2.pages.dev/property/kintex-prime-store.html): 킨텍스 배후 상가
-- [대화역 스타상가](https://realestate2.pages.dev/property/daehwa-star-store.html): 역세권 소형 상가
-- [호수공원 상가](https://realestate2.pages.dev/property/ilsan-lake-store.html): 관광형 상가
-- [일산테크노밸리](https://realestate2.pages.dev/property/ilsan-technovalley.html): IT·바이오 지식산업센터
-- [고양 지식산업센터](https://realestate2.pages.dev/property/goyang-knowledge.html): 향동지구 지식산업센터
-- [킨텍스 비즈타워](https://realestate2.pages.dev/property/kintex-biz.html): 전시·컨벤션 업무공간
+- [킨텍스 원시티](https://realestate2-71e.pages.dev/property/kintex-one-city.html): GTX-A 킨텍스역 아파트
+- [고양창릉 A-2블록](https://realestate2-71e.pages.dev/property/changneung-a2.html): 3기 신도시 첫 분양
+- [일산 힐스테이트](https://realestate2-71e.pages.dev/property/ilsan-hillstate.html): 정발산역 프리미엄 아파트
+- [킨텍스 꿈에그린](https://realestate2-71e.pages.dev/property/kintex-dream-green.html): 대화역 오피스텔
+- [일산 더샵](https://realestate2-71e.pages.dev/property/ilsan-thesharp.html): 마두역 오피스텔
+- [대화역 한양수자인](https://realestate2-71e.pages.dev/property/daehwa-hanyang.html): 초역세권 오피스텔
+- [킨텍스 프라임상가](https://realestate2-71e.pages.dev/property/kintex-prime-store.html): 킨텍스 배후 상가
+- [대화역 스타상가](https://realestate2-71e.pages.dev/property/daehwa-star-store.html): 역세권 소형 상가
+- [호수공원 상가](https://realestate2-71e.pages.dev/property/ilsan-lake-store.html): 관광형 상가
+- [일산테크노밸리](https://realestate2-71e.pages.dev/property/ilsan-technovalley.html): IT·바이오 지식산업센터
+- [고양 지식산업센터](https://realestate2-71e.pages.dev/property/goyang-knowledge.html): 향동지구 지식산업센터
+- [킨텍스 비즈타워](https://realestate2-71e.pages.dev/property/kintex-biz.html): 전시·컨벤션 업무공간
 
 ## 운영 주체
 더에셋스퀘어 — 부동산분양 전문 플랫폼
