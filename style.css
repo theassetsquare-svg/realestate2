@@ -211,6 +211,29 @@ a,button,summary,.card-link,.badge,.sim-btn,.alert-cta-btn{touch-action:manipula
 }
 
 /* ============================================================
+   UI/UX 미세 최적화 — 가독성 · 반응형 표 · 앵커 오프셋
+   ============================================================ */
+
+/* 스티키 헤더 아래로 앵커/스킵링크 착지 (제목이 헤더에 가리지 않게) */
+html{scroll-padding-top:72px}
+
+/* 모바일: 다열 비교표를 찌그러뜨리지 않고 가로 스크롤 */
+.comparison{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.comp-table{min-width:520px}
+
+/* 데스크톱 가독성: 본문 글줄 길이를 ~780px로 제한 (표·계산기·카드는 전체폭 유지) */
+@media(min-width:768px){
+  .detail-content>p,.detail-content>ul,.detail-content>h2,.detail-content>h3{max-width:780px}
+  .comp-table{min-width:0}
+}
+
+/* 다크모드 가독성 보강 */
+@media(prefers-color-scheme:dark){
+  .sim-result .monthly{color:#60a5fa}
+  .hero h1 em{color:#7cc0ff}
+}
+
+/* ============================================================
    UI/UX 2026 — 접근성 · 다크모드 · 마이크로인터랙션 · 모션
    ============================================================ */
 
