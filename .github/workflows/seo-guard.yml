@@ -25,6 +25,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: HTML 디버깅 린터 (버그 시 실패)
+        run: node tools/debug.mjs --ci
       - name: SEO 감사 (위반 시 실패)
         run: node tools/seo-audit.mjs --ci
       - name: 키워드 스터핑 정밀 검사 (단일토큰 >2.5% 시 실패)

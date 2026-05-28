@@ -12,8 +12,10 @@
     "normalize:check": "node tools/normalize.mjs --check",
     "stuffing": "node tools/stuffing.mjs",
     "stuffing:ci": "node tools/stuffing.mjs --ci",
+    "debug": "node tools/debug.mjs",
+    "debug:ci": "node tools/debug.mjs --ci",
     "healthcheck": "node tools/healthcheck.mjs",
-    "check": "node tools/normalize.mjs --check && node tools/seo-audit.mjs --ci && node tools/stuffing.mjs --ci",
+    "check": "node tools/debug.mjs --ci && node tools/normalize.mjs --check && node tools/seo-audit.mjs --ci && node tools/stuffing.mjs --ci",
     "serve": "node tools/serve.mjs"
   },
   "engines": { "node": ">=18" }
