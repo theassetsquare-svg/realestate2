@@ -45,6 +45,17 @@ function normalize(html) {
     '<div class="site-bottombar"><a href="https://theassetsquare.com/" target="_blank" rel="noopener noreferrer">$1</a></div>'
   );
 
+  // 2-3) 사진 플레이스홀더에서 현장명 반복 제거 (스터핑 방지)
+  const h1 = (out.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i) || [])[1];
+  if (h1) {
+    const name = h1.replace(/<[^>]+>/g, '').trim();
+    if (name) {
+      const esc = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      out = out.replace(new RegExp(`(<div class="photo-placeholder">)${esc}\\s+`, 'g'), '$1');
+      out = out.replace(new RegExp(`(<div class="photo-placeholder">)${esc}(<\\/div>)`, 'g'), '$1단지 이미지$2');
+    }
+  }
+
   // 3) 내부 링크 target/rel 제거
   out = out.replace(/<a\s+[^>]*>/gi, (tag) => {
     const m = tag.match(/href=["']([^"']*)["']/i);

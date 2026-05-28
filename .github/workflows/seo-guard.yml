@@ -27,6 +27,8 @@ jobs:
           node-version: '20'
       - name: SEO 감사 (위반 시 실패)
         run: node tools/seo-audit.mjs --ci
+      - name: 키워드 스터핑 정밀 검사 (단일토큰 >2.5% 시 실패)
+        run: node tools/stuffing.mjs --ci
       - name: 구조 정규화 검사 (전화번호/내부링크/하단바)
         run: node tools/normalize.mjs --check
 

@@ -10,8 +10,10 @@
     "audit:json": "node tools/seo-audit.mjs --json",
     "normalize": "node tools/normalize.mjs",
     "normalize:check": "node tools/normalize.mjs --check",
+    "stuffing": "node tools/stuffing.mjs",
+    "stuffing:ci": "node tools/stuffing.mjs --ci",
     "healthcheck": "node tools/healthcheck.mjs",
-    "check": "node tools/normalize.mjs --check && node tools/seo-audit.mjs --ci",
+    "check": "node tools/normalize.mjs --check && node tools/seo-audit.mjs --ci && node tools/stuffing.mjs --ci",
     "serve": "node tools/serve.mjs"
   },
   "engines": { "node": ">=18" }
