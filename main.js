@@ -56,4 +56,46 @@
       });
     });
   });
+
+  var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* A11Y: 본문 바로가기 스킵 링크 */
+  var main=document.querySelector('main');
+  if(main){
+    if(!main.id)main.id='main-content';
+    var skip=document.createElement('a');
+    skip.href='#'+main.id;skip.className='skip-link';skip.textContent='본문 바로가기';
+    document.body.insertBefore(skip,document.body.firstChild);
+  }
+
+  /* 상단 스크롤 진행바 */
+  var bar=document.createElement('div');bar.className='scroll-progress';document.body.appendChild(bar);
+  /* 백투탑 버튼 */
+  var toTop=document.createElement('button');toTop.className='to-top';toTop.setAttribute('aria-label','맨 위로');toTop.innerHTML='↑';document.body.appendChild(toTop);
+  toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});});
+  var ticking=false;
+  function onScroll(){
+    var h=document.documentElement;
+    var scrolled=h.scrollTop/((h.scrollHeight-h.clientHeight)||1);
+    bar.style.width=(scrolled*100)+'%';
+    toTop.classList.toggle('show',h.scrollTop>400);
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(onScroll);ticking=true;}},{passive:true});
+
+  /* 현재 페이지 내비 활성화 */
+  var path=location.pathname.replace(/index\.html$/,'')||'/';
+  document.querySelectorAll('.main-nav a').forEach(function(a){
+    var href=a.getAttribute('href');
+    if(href===path||(href!=='/'&&path.indexOf(href)===0)){a.setAttribute('aria-current','page');a.style.color='#2563eb';}
+  });
+
+  /* 스크롤 리빌 (점진적 향상 — JS 없으면 항상 보임) */
+  if('IntersectionObserver' in window && !reduceMotion){
+    var targets=document.querySelectorAll('.cat-link,.card-link,.detail-content>h2,.detail-content>h3,.detail-content>p,.detail-content>ul,.simulator,.comparison,.timeline,.neighborhood,.expert-quote,.alert-cta,.faq-list,.detail-cta-box');
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    targets.forEach(function(el,i){el.classList.add('reveal');el.style.transitionDelay=Math.min(i%6*40,200)+'ms';io.observe(el);});
+  }
 })();

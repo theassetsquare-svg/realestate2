@@ -2,7 +2,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 /* 1. SPEED: System font stack — NO Pretendard CDN = 0KB font load */
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR","Helvetica Neue",sans-serif;font-size:1rem;line-height:1.7;color:#1a1a2e;background:#f8f9fc;-webkit-font-smoothing:antialiased;padding-bottom:96px;min-height:100vh}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR","Helvetica Neue",sans-serif;font-size:1rem;line-height:1.7;color:#1a1a2e;background:#f8f9fc;-webkit-font-smoothing:antialiased;padding-bottom:56px;min-height:100vh}
 img{max-width:100%;height:auto;display:block;border-radius:12px}
 a{color:#2563eb;text-decoration:none;transition:color .2s;min-height:44px;display:inline-flex;align-items:center}
 a:hover{color:#1d4ed8}
@@ -208,4 +208,107 @@ a,button,summary,.card-link,.badge,.sim-btn,.alert-cta-btn{touch-action:manipula
   .sim-row{flex-direction:row;align-items:center;gap:12px}
   .sim-row label{min-width:120px;margin-bottom:0}
   .nb-grid{grid-template-columns:repeat(4,1fr)}
+}
+
+/* ============================================================
+   UI/UX 2026 — 접근성 · 다크모드 · 마이크로인터랙션 · 모션
+   ============================================================ */
+
+/* --- A11Y: 키보드 포커스 (focus-visible) --- */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,.card-link:focus-visible{
+  outline:3px solid #2563eb;outline-offset:3px;border-radius:8px}
+:focus:not(:focus-visible){outline:none}
+
+/* --- A11Y: 스킵 링크 (main.js 가 주입) --- */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:1000;background:#1e40af;color:#fff;padding:12px 20px;border-radius:0 0 10px 0;font-weight:700;font-size:.95rem}
+.skip-link:focus{left:0;color:#fff}
+
+/* --- 텍스트 선택 색상 --- */
+::selection{background:#2563eb;color:#fff}
+
+/* --- 상단 스크롤 진행바 (main.js 가 주입) --- */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#60a5fa,#2563eb,#7c3aed);z-index:200;transition:width .1s linear}
+
+/* --- 스크롤 리빌 애니메이션 --- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* --- 카드/버튼 마이크로 인터랙션 강화 --- */
+.card-link{position:relative}
+.card-link::after{content:'';position:absolute;inset:0;border-radius:16px;box-shadow:inset 0 0 0 2px transparent;transition:box-shadow .25s;pointer-events:none}
+.card-link:hover::after,.card-link:focus-visible::after{box-shadow:inset 0 0 0 2px #2563eb}
+.card-img-placeholder{transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.card-link:hover .card-img-placeholder{transform:scale(1.04)}
+.hero-cta:active,.detail-cta-btn:active,.alert-cta-btn:active,.sim-btn:active,.nav-cta:active{transform:translateY(1px) scale(.99)}
+.cat-link{position:relative;overflow:hidden}
+.cat-link::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(37,99,235,.06),rgba(124,58,237,.06));opacity:0;transition:opacity .25s}
+.cat-link:hover::before{opacity:1}
+.cat-icon{transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.cat-link:hover .cat-icon{transform:translateY(-3px) scale(1.12)}
+
+/* --- 배지 펄스(마감임박) --- */
+.badge-closing{position:relative;animation:badgePulse 2s ease-in-out infinite}
+@keyframes badgePulse{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.0)}50%{box-shadow:0 0 0 4px rgba(220,38,38,.18)}}
+
+/* --- 하단 고정 메인사이트 바: 그라데이션+호버 --- */
+.site-bottombar{position:fixed;bottom:0;left:0;width:100%;height:48px;display:flex;align-items:center;justify-content:center;z-index:9999;background:linear-gradient(90deg,#1d4ed8,#2563eb,#1d4ed8);box-shadow:0 -2px 12px rgba(0,0,0,.15)}
+.site-bottombar a{color:#fff;font-size:.95rem;font-weight:700;min-height:48px}
+
+/* --- 백투탑 버튼 (main.js 주입) --- */
+.to-top{position:fixed;right:16px;bottom:60px;width:46px;height:46px;border-radius:50%;background:#1e40af;color:#fff;border:none;font-size:1.3rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(30,64,175,.4);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .3s;z-index:150}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+.to-top:hover{background:#2563eb;color:#fff}
+
+/* --- 데스크톱 타이포 리듬 강화 --- */
+@media(min-width:768px){
+  .detail-content p{font-size:1rem;line-height:1.8}
+  .section h2,.detail-content h2{font-size:1.4rem}
+  .hero-sub{font-size:1.05rem}
+}
+
+/* --- DARK MODE --- */
+@media(prefers-color-scheme:dark){
+  body{background:#0d1117;color:#e6edf3}
+  .site-header{background:rgba(13,17,23,.95);border-bottom-color:#21262d}
+  .logo{color:#e6edf3}
+  .main-nav a{color:#9aa4b2}
+  .main-nav a:hover{color:#fff}
+  .main-nav.open{background:#0d1117}
+  .main-nav.open a{border-bottom-color:#21262d}
+  .menu-toggle span{background:#e6edf3}
+  .cat-link{background:#161b22;border-color:#21262d;color:#c9d1d9}
+  .cat-link:hover{border-color:#2563eb;color:#60a5fa}
+  .card-link{background:#161b22;border-color:#21262d}
+  .card-body h3{color:#e6edf3}
+  .card-meta,.section-desc,.breadcrumb,.breadcrumb a{color:#9aa4b2}
+  .card-specs span{background:#21262d;color:#c9d1d9}
+  .section h2,.detail-content h3{color:#e6edf3}
+  .detail-content p,.detail-content ul li{color:#c9d1d9}
+  .detail-content h2{color:#60a5fa}
+  .faq-item{background:#161b22;border-color:#21262d}
+  .faq-item summary{color:#e6edf3}
+  .faq-answer{color:#9aa4b2}
+  .comp-table{background:#161b22;border-color:#21262d}
+  .comp-table th{background:#21262d;color:#c9d1d9;border-bottom-color:#30363d}
+  .comp-table td{color:#c9d1d9;border-bottom-color:#21262d}
+  .comp-table tr:hover td{background:#1c2330}
+  .comp-table .highlight,.comp-table .highlight td{background:#13233f;color:#79b8ff}
+  .simulator{background:#161b22;border-color:#2563eb}
+  .sim-row input,.sim-row select{background:#0d1117;border-color:#30363d;color:#e6edf3}
+  .sim-result{background:#13233f}
+  .sim-result .breakdown dd{color:#e6edf3}
+  .nb-item{background:#161b22;border-color:#21262d}
+  .nb-info strong{color:#e6edf3}
+  .nb-info span{color:#9aa4b2}
+  .alert-cta{background:#2b2410;border-color:#5c4a13}
+  .alert-cta h3{color:#fbbf24}
+  .alert-cta p{color:#e3c87a}
+  .tl-title{color:#e6edf3}
+  .tl-desc{color:#9aa4b2}
+}
+
+/* --- 모션 최소화 선호 존중 --- */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+  .reveal{opacity:1;transform:none}
 }

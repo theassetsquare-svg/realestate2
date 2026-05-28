@@ -1,0 +1,44 @@
+name: SEO Guard (24h 자동 점검)
+
+# 24시간 자동화:
+#  - 6시간마다 정기 점검 (cron)
+#  - main 푸시/PR 시 게이트
+#  - 수동 실행(workflow_dispatch)
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 */6 * * *'   # 매 6시간 (UTC) — 하루 4회
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: 키워드·스터핑·전화번호·메타 감사
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: SEO 감사 (위반 시 실패)
+        run: node tools/seo-audit.mjs --ci
+      - name: 구조 정규화 검사 (전화번호/내부링크/하단바)
+        run: node tools/normalize.mjs --check
+
+  live-healthcheck:
+    name: 라이브사이트 헬스체크
+    runs-on: ubuntu-latest
+    # 정기점검·수동실행 때만 라이브 확인 (PR에선 생략)
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 배포본 전 페이지 전화번호·상태 점검
+        run: node tools/healthcheck.mjs
