@@ -1,0 +1,7 @@
+# GSC 서비스 계정 키 — 절대 커밋 금지 (공개 저장소)
+.gsc-key.json
+tools/.gsc-key.json
+*-key.json
+*credentials*.json
+.env
+node_modules/

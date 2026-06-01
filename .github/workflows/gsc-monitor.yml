@@ -1,0 +1,35 @@
+name: GSC Monitor (색인·순위·카니발 자동 점검 + 이메일)
+
+# 매일 1회 GSC 점검 → 문제 발견 시 theassetsquare@gmail.com 으로 자동 알림
+# 필요한 Secrets (repo Settings → Secrets and variables → Actions):
+#   GSC_SA_KEY      : 서비스계정 JSON 전체 내용 (gsc-mcp@theasset-gsc...)
+#   RESEND_API_KEY  : 이메일 발송용 (없으면 점검만 하고 메일 생략)
+on:
+  schedule:
+    - cron: '0 23 * * *'   # 매일 08:00 KST (23:00 UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gsc-monitor:
+    name: GSC 색인·순위 점검
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: GSC 모니터 실행 (문제 시 이메일)
+        env:
+          GSC_SA_KEY: ${{ secrets.GSC_SA_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          GSC_SITE: 'https://realestate2-71e.pages.dev/'
+          ALERT_TO: 'theassetsquare@gmail.com'
+        run: |
+          if [ -z "$GSC_SA_KEY" ]; then
+            echo "::warning::GSC_SA_KEY 시크릿 미설정 — 점검 생략. repo Secrets에 추가하세요."
+            exit 0
+          fi
+          node tools/gsc-monitor.mjs
