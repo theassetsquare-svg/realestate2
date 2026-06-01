@@ -29,6 +29,6 @@ NO same word twice in title!
 - NEVER use shared content pools! Write UNIQUE 1000+ chars per venue!
 
 ## NEVER
-- NEVER put ANY phone number ANYWHERE — 광고주번호 포함 전화번호 자체 금지! No tel: links. 모든 연락 → 메인사이트 https://theassetsquare.com/ 링크만!
+- NEVER use fake phone numbers! NEVER use placeholder data! Only REAL advertiser phone numbers! No number = leave empty!
 - Auto page transition. Next.js. Change URLs
 - Brand path. Stuffing. Fake properties. Completed sales
