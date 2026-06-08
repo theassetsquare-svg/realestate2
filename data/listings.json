@@ -1,0 +1,209 @@
+{
+  "site": "https://realestate2-71e.pages.dev",
+  "updated": "2026-06-01",
+  "note": "SSOT(단일 진실원천). 청약홈·언론 교차검증 실데이터만. 미확정 수치는 source='예상'/confirmed=false. tools/update-listings.mjs 가 청약홈(DATA_GO_KR_KEY)으로 갱신.",
+  "categories": [
+    {
+      "slug": "apartment",
+      "label": "아파트분양",
+      "priority": "0.9"
+    },
+    {
+      "slug": "officetel",
+      "label": "오피스텔분양",
+      "priority": "0.9"
+    },
+    {
+      "slug": "store",
+      "label": "상가분양",
+      "priority": "0.9"
+    },
+    {
+      "slug": "knowledge-center",
+      "label": "지식산업센터분양",
+      "priority": "0.9"
+    },
+    {
+      "slug": "land",
+      "label": "토지분양",
+      "priority": "0.9"
+    },
+    {
+      "slug": "industrial",
+      "label": "산업단지분양",
+      "priority": "0.9"
+    }
+  ],
+  "listings": [
+    {
+      "slug": "jangwi-purgio-markone",
+      "name": "장위 푸르지오 마크원",
+      "category": "apartment",
+      "region": {
+        "city": "서울특별시",
+        "gu": "성북구",
+        "dong": "장위동",
+        "zone": "장위10구역"
+      },
+      "units": 1931,
+      "generalUnits": 1032,
+      "sizes": "전용 84㎡ 등",
+      "floors": "지하5~지상35층 10개동",
+      "builder": "대우건설",
+      "price": {
+        "text": "84㎡ 17억~18억대",
+        "perPyeong": "약 5,200만~5,300만원",
+        "source": "예상",
+        "confirmed": false
+      },
+      "schedule": {
+        "apply": "2026-06",
+        "applyConfirmed": false,
+        "moveIn": "2030 상반기"
+      },
+      "status": "upcoming",
+      "badge": "분양예정",
+      "source": {
+        "name": "청약홈·언론보도 교차검증",
+        "verifiedAt": "2026-06-01",
+        "managementNo": null
+      }
+    },
+    {
+      "slug": "dpine-artia-noryangjin",
+      "name": "드파인 아르티아",
+      "category": "apartment",
+      "region": {
+        "city": "서울특별시",
+        "gu": "동작구",
+        "dong": "노량진동",
+        "zone": "노량진2구역"
+      },
+      "units": 404,
+      "generalUnits": 171,
+      "sizes": "59~109㎡",
+      "floors": "45층 2개동",
+      "builder": "SK에코플랜트",
+      "price": {
+        "text": "84㎡ 20억대 중후반",
+        "perPyeong": null,
+        "source": "예상",
+        "confirmed": false
+      },
+      "schedule": {
+        "apply": "2026-06",
+        "applyConfirmed": false,
+        "moveIn": null
+      },
+      "status": "upcoming",
+      "badge": "분양예정",
+      "source": {
+        "name": "청약홈·언론보도 교차검증",
+        "verifiedAt": "2026-06-01",
+        "managementNo": null
+      }
+    },
+    {
+      "slug": "summit-clavion-singil",
+      "name": "써밋 클라비온",
+      "category": "apartment",
+      "region": {
+        "city": "서울특별시",
+        "gu": "영등포구",
+        "dong": "신길동",
+        "zone": "신길10구역"
+      },
+      "units": 812,
+      "generalUnits": 176,
+      "sizes": "44~84㎡",
+      "floors": "29층 8개동",
+      "builder": "대우건설",
+      "price": {
+        "text": "분양가 모집공고 시 확정",
+        "perPyeong": null,
+        "source": "예정",
+        "confirmed": false
+      },
+      "schedule": {
+        "apply": "2026-06",
+        "applyConfirmed": false,
+        "moveIn": null
+      },
+      "status": "upcoming",
+      "badge": "분양예정",
+      "source": {
+        "name": "청약홈·언론보도 교차검증",
+        "verifiedAt": "2026-06-01",
+        "managementNo": null
+      }
+    },
+    {
+      "slug": "dongjak-central-dongmun",
+      "name": "동작 센트럴 동문 디 이스트",
+      "category": "apartment",
+      "region": {
+        "city": "서울특별시",
+        "gu": "동작구",
+        "dong": "노량진동",
+        "zone": "장승배기"
+      },
+      "units": 301,
+      "generalUnits": null,
+      "sizes": "지상 29층",
+      "floors": "29층 3개동",
+      "builder": "동문건설",
+      "price": {
+        "text": "평당 7천만원대",
+        "perPyeong": "약 7,000만원대",
+        "source": "예상",
+        "confirmed": false
+      },
+      "schedule": {
+        "apply": "2026-06",
+        "applyConfirmed": false,
+        "moveIn": null
+      },
+      "status": "upcoming",
+      "badge": "분양예정",
+      "source": {
+        "name": "청약홈·언론보도 교차검증",
+        "verifiedAt": "2026-06-01",
+        "managementNo": null
+      }
+    },
+    {
+      "slug": "mokdong-yunseul-xi",
+      "name": "목동 윤슬자이",
+      "category": "officetel",
+      "region": {
+        "city": "서울특별시",
+        "gu": "양천구",
+        "dong": "목동",
+        "zone": null
+      },
+      "units": 651,
+      "generalUnits": null,
+      "sizes": "114~204㎡",
+      "floors": "48층 주거형",
+      "builder": "GS건설",
+      "price": {
+        "text": "약 30억 수준",
+        "perPyeong": null,
+        "source": "예상",
+        "confirmed": false
+      },
+      "schedule": {
+        "apply": "2026-06",
+        "applyConfirmed": false,
+        "moveIn": null
+      },
+      "status": "upcoming",
+      "badge": "분양예정",
+      "source": {
+        "name": "청약홈·언론보도 교차검증",
+        "verifiedAt": "2026-06-01",
+        "managementNo": null
+      }
+    }
+  ]
+}

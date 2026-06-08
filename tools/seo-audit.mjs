@@ -174,6 +174,8 @@ for (const file of files) {
   if (darkHits.length) issues.push(`다크패턴/FOMO ${darkHits.length}건: ${[...new Set(darkHits)].join(', ')}`);
   // (2) 본진(theassetsquare.com) 0홉 링크 필수
   if (mainLinks === 0) issues.push('본진(theassetsquare.com) 링크 없음 (유입 동선 누락)');
+  // (3) 반응형: 비교표는 .comparison(overflow-x) 래퍼 안에 있어야 (모바일 가로 오버플로 방지)
+  if (/class=["']comp-table["']/.test(html) && !/class=["']comparison["']/.test(html)) issues.push('비교표(.comp-table)가 .comparison 래퍼 밖 — 모바일 오버플로');
 
   if (title) titles.set(rel, title);
   if (desc) descs.set(rel, desc);
@@ -212,6 +214,11 @@ try {
     }
     if (minPx !== Infinity && minPx < 16) cssIssues.push(`${sel} 본문 ${minPx}px (<16px — 모바일 가독성)`);
   }
+  // 반응형: 가로 오버플로 방지
+  const contBlock = (css.match(/\.container\s*\{([^}]*)\}/) || [])[1] || '';
+  if (/(?<!-)\bwidth:\s*\d{3,}px/.test(contBlock)) cssIssues.push('.container 고정 px width (max-width 사용해야 — 가로 오버플로)');
+  if (/\.comp-table\s*\{/.test(css) && !/\.comparison\s*\{[^}]*overflow-x:\s*auto/.test(css))
+    cssIssues.push('.comp-table 가로스크롤 래퍼(.comparison overflow-x:auto) 없음 — 모바일 표 오버플로');
 } catch { /* style.css 없으면 스킵 */ }
 
 // ---- soft-404 / 인프라 게이트 (_redirects · sitemap) ----
@@ -226,6 +233,18 @@ try {
   const sm = readFileSync(join(ROOT, 'sitemap.xml'), 'utf8');
   if (/\.html<\/loc>/i.test(sm)) infraIssues.push('sitemap .html URL 잔존 — 클린 URL로');
 } catch { /* sitemap 없으면 스킵 */ }
+// SSOT ↔ 페이지 정합 (자동생성 파이프라인 일관성)
+try {
+  const ssot = JSON.parse(readFileSync(join(ROOT, 'data/listings.json'), 'utf8'));
+  const active = ssot.listings.filter(l => l.status !== 'archived');
+  for (const l of active) {
+    try { statSync(join(ROOT, 'property', l.slug + '.html')); }
+    catch { infraIssues.push(`SSOT 현장 "${l.slug}" 상세 페이지 없음`); }
+  }
+  const ssotSlugs = new Set(ssot.listings.map(l => l.slug));
+  for (const r of results) if (r.isDetail && !ssotSlugs.has(r.node.replace('/property/', '')))
+    infraIssues.push(`상세 "${r.node}" 가 SSOT(listings.json)에 없음`);
+} catch { /* SSOT 없으면 스킵 */ }
 
 // ---- 링크 그래프 게이트 (고아 · 상세 막다른길) ----
 const graphIssues = [];

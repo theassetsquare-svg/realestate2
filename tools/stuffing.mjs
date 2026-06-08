@@ -71,8 +71,13 @@ for (const file of files) {
   // 멀티워드 현장명의 '전체구절 밀도'는 글자수 합산 특성상 부풀려지므로 참고용.
   const issues = [];   // 하드 실패 (스터핑)
   const warns = [];    // 경고 (참고용)
+  // 구조적 상태배지(UI 라벨)는 카드 수 증가에 비례해 반복되므로 키워드 스터핑에서 제외(경고로만)
+  const STRUCTURAL = new Set(['분양예정', '분양중', '접수중', '분양완료', '분양종료', '청약접수', '모집공고', '분양정보']);
   if (dBudongsan > MAX) issues.push(`"부동산분양" ${dBudongsan}% 스터핑`);
-  for (const t of tops) if (t.d > MAX) issues.push(`반복어 "${t.k}" ${t.d}% (${t.c}회) 스터핑`);
+  for (const t of tops) if (t.d > MAX) {
+    if (STRUCTURAL.has(t.k)) warns.push(`구조적 상태배지 "${t.k}" ${t.d}% (${t.c}회 — 스터핑 제외)`);
+    else issues.push(`반복어 "${t.k}" ${t.d}% (${t.c}회) 스터핑`);
+  }
 
   const isMultiWord = primary.includes(' ');
   if (isMultiWord && dPrimary > 3.5) warns.push(`현장명 전체구절 ${dPrimary}% (구조적 반복 — 단일토큰 기준으로 판정)`);
