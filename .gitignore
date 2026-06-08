@@ -5,3 +5,4 @@ tools/.gsc-key.json
 *credentials*.json
 .env
 node_modules/
+tools/.fonts/

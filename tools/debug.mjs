@@ -17,7 +17,7 @@ const BANNED = ['1666-6838', '1660-4050'];
 
 function walk(dir, acc = []) {
   for (const n of readdirSync(dir)) {
-    if (n.startsWith('.') || n === 'node_modules' || n === 'tools') continue;
+    if (n.startsWith('.') || n === 'node_modules' || n === 'tools' || n === '404.html') continue;
     const f = join(dir, n);
     statSync(f).isDirectory() ? walk(f, acc) : (n.endsWith('.html') && acc.push(f));
   }
@@ -73,9 +73,14 @@ for (const file of files) {
     // 외부 링크 + target=_blank 인데 rel noopener 없음 (보안)
     if (/^https?:\/\//i.test(href) && /target=["']_blank["']/i.test(a) && !/rel=["'][^"']*noopener/i.test(a))
       bugs.push(`외부 _blank 링크에 rel=noopener 없음: ${href}`);
-    // 내부 .html 링크 파일 존재?
-    if (href.startsWith('/') && href.endsWith('.html') && !exists(href.replace(/^\//, '')))
-      bugs.push(`깨진 내부 링크: ${href}`);
+    // 내부 링크 파일 존재? (.html 직접 또는 클린 URL → .html 매핑)
+    if (href.startsWith('/') && !href.startsWith('//')) {
+      const clean = href.split('#')[0].split('?')[0].replace(/^\//, '').replace(/\/$/, '');
+      if (clean === '') { /* 루트 = index.html */ }
+      else if (/\.[a-z0-9]+$/i.test(clean)) { if (!exists(clean)) bugs.push(`깨진 내부 링크: ${href}`); }
+      else if (!exists(clean + '.html') && !exists(clean + '/index.html') && !exists(clean))
+        bugs.push(`깨진 내부 링크(클린): ${href}`);
+    }
   }
 
   // 6) 금지 전화번호 / tel 링크

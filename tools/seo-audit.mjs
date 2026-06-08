@@ -31,7 +31,7 @@ const RULES = {
 // ---- HTML 파일 수집 ----
 function walk(dir, acc = []) {
   for (const name of readdirSync(dir)) {
-    if (name.startsWith('.') || name === 'node_modules' || name === 'tools') continue;
+    if (name.startsWith('.') || name === 'node_modules' || name === 'tools' || name === '404.html') continue;
     const full = join(dir, name);
     const st = statSync(full);
     if (st.isDirectory()) walk(full, acc);
@@ -146,6 +146,17 @@ for (const file of files) {
   const assertive = priceFrags.filter(v => /(\d+\s*억|평당\s*[\d,]+\s*만)/.test(v) && !HEDGE.test(v));
   if (assertive.length) issues.push(`미검증 단정 분양가 ${assertive.length}건 (헤지 라벨 없음): ${assertive.join(' / ')}`);
 
+  // ---- 3단계 게이트 (재발 방지) ----
+  // (1) og:image SVG 금지 — 1200² 실 PNG
+  if (ogImage && /\.svg(\?|#|$)/i.test(ogImage)) issues.push(`og:image SVG (${ogImage}) — 1200² 실 PNG 필요`);
+  // (2) canonical/og:url/내부링크 .html 금지 — 클린 URL 통일(308 1홉 제거)
+  if (canonical && /\.html(\?|#|$)/i.test(canonical)) issues.push(`canonical .html — 클린 URL로`);
+  if (ogUrl && /\.html(\?|#|$)/i.test(ogUrl)) issues.push(`og:url .html — 클린 URL로`);
+  const htmlLinks = (html.match(/href=["']\/[^"']*\.html["']/gi) || []).length;
+  if (htmlLinks) issues.push(`내부 .html 링크 ${htmlLinks}개 — 클린 URL로`);
+  // (3) 상세 BreadcrumbList 필수
+  if (isDetail && !/"BreadcrumbList"/.test(html)) issues.push('상세 BreadcrumbList JSON-LD 누락');
+
   if (title) titles.set(rel, title);
   if (desc) descs.set(rel, desc);
 
@@ -184,10 +195,23 @@ try {
   }
 } catch { /* style.css 없으면 스킵 */ }
 
-const totalIssues = results.reduce((n, r) => n + r.issues.length, 0) + dupTitles.length + dupDescs.length + cssIssues.length;
+// ---- soft-404 / 인프라 게이트 (_redirects · sitemap) ----
+const infraIssues = [];
+try {
+  const rd = readFileSync(join(ROOT, '_redirects'), 'utf8');
+  if (/\/\*\s+\/index\.html\s+200/.test(rd)) infraIssues.push('_redirects soft-404: /* → /index.html 200 (가짜URL이 홈 200 반환)');
+  else if (/\/\*\s+\/\S+\s+200\b/.test(rd)) infraIssues.push('_redirects: 와일드카드 200 catch-all (soft-404 위험)');
+  if (!/\/\*\s+\/404\.html\s+404/.test(rd)) infraIssues.push('_redirects: "/* /404.html 404" 규칙 없음');
+} catch { infraIssues.push('_redirects 파일 없음'); }
+try {
+  const sm = readFileSync(join(ROOT, 'sitemap.xml'), 'utf8');
+  if (/\.html<\/loc>/i.test(sm)) infraIssues.push('sitemap .html URL 잔존 — 클린 URL로');
+} catch { /* sitemap 없으면 스킵 */ }
+
+const totalIssues = results.reduce((n, r) => n + r.issues.length, 0) + dupTitles.length + dupDescs.length + cssIssues.length + infraIssues.length;
 
 if (AS_JSON) {
-  console.log(JSON.stringify({ generatedAt: new Date().toISOString(), pages: results.length, totalIssues, results, dupTitles, dupDescs, cssIssues }, null, 2));
+  console.log(JSON.stringify({ generatedAt: new Date().toISOString(), pages: results.length, totalIssues, results, dupTitles, dupDescs, cssIssues, infraIssues }, null, 2));
 } else {
   const C = { red: s => `\x1b[31m${s}\x1b[0m`, grn: s => `\x1b[32m${s}\x1b[0m`, yel: s => `\x1b[33m${s}\x1b[0m`, dim: s => `\x1b[2m${s}\x1b[0m`, b: s => `\x1b[1m${s}\x1b[0m` };
   console.log(C.b(`\n📊 TheAssetSquare SEO 자동 감사 — ${new Date().toLocaleString('ko-KR')}`));
@@ -204,6 +228,7 @@ if (AS_JSON) {
   if (dupTitles.length) { console.log(C.red('⚠ 중복 title:')); dupTitles.forEach(g => console.log('  ' + g.join(' = '))); }
   if (dupDescs.length) { console.log(C.red('⚠ 중복 description:')); dupDescs.forEach(g => console.log('  ' + g.join(' = '))); }
   if (cssIssues.length) { console.log(C.red('⚠ 모바일 본문 16px 위반:')); cssIssues.forEach(i => console.log('  ' + i)); }
+  if (infraIssues.length) { console.log(C.red('⚠ 인프라(soft-404/sitemap) 위반:')); infraIssues.forEach(i => console.log('  ' + i)); }
   console.log(totalIssues === 0 ? C.grn('\n✅ 위반 0건 — 전 페이지 통과\n') : C.red(`\n❌ 총 ${totalIssues}건 수정 필요\n`));
 }
 

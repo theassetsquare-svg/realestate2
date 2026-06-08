@@ -17,7 +17,7 @@ const MAX = 2.5, MIN = 1.0;
 
 function walk(dir, acc = []) {
   for (const n of readdirSync(dir)) {
-    if (n.startsWith('.') || n === 'node_modules' || n === 'tools') continue;
+    if (n.startsWith('.') || n === 'node_modules' || n === 'tools' || n === '404.html') continue;
     const f = join(dir, n);
     statSync(f).isDirectory() ? walk(f, acc) : (n.endsWith('.html') && acc.push(f));
   }
