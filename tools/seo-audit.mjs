@@ -125,6 +125,27 @@ for (const file of files) {
   if (densPrimary > RULES.densityMax) issues.push(`"${RULES.primaryKeyword}" 밀도 ${densPrimary}% (스터핑>${RULES.densityMax}%)`);
   if (isDetail && densName > RULES.densityMax) issues.push(`현장명 밀도 ${densName}% (스터핑)`);
 
+  // ---- 2단계 게이트 (재발 방지) ----
+  // (1) "무료"/"체험" — 절대규칙 #27 (head 포함 전수)
+  const freeHits = (html.match(/무료|체험/g) || []).length;
+  if (freeHits) issues.push(`"무료/체험" ${freeHits}회 (절대규칙 #27 위반)`);
+
+  // (2) 위성 가짜 폼 — 서브사이트엔 가입/알림 폼 0 (모든 행동은 본진 링크로)
+  if (/<form[\s>]/i.test(html)) issues.push('서브사이트 <form> 존재 (가입 폼 금지)');
+  if (/type=["']?email/i.test(html)) issues.push('email 입력 필드 존재 (가입 폼 금지)');
+  const signupCta = (html.match(/<a[^>]*class=["'][^"']*(?:alert-cta-btn|detail-cta-btn|hero-cta|nav-cta)[^"']*["'][^>]*>([^<]*)<\/a>/gi) || [])
+    .filter(a => /신청/.test(a)).length;
+  if (signupCta) issues.push(`CTA "신청" 문구 ${signupCta}개 (위성 가입 오인 — 본진 유도 문구로 변경 필요)`);
+
+  // (3) 미검증 단정 분양가 — card-price/spec 분양가에 억·평당 숫자가 헤지 라벨 없이 단정
+  const HEDGE = /(예상|예정|미정|확정|공고|추정|전망)/;
+  const priceFrags = [
+    ...(html.match(/<p class=["']card-price["']>([^<]*)<\/p>/gi) || []),
+    ...(html.match(/<strong>분양가<\/strong><span>([^<]*)<\/span>/gi) || []),
+  ].map(s => s.replace(/<[^>]+>/g, '').trim());
+  const assertive = priceFrags.filter(v => /(\d+\s*억|평당\s*[\d,]+\s*만)/.test(v) && !HEDGE.test(v));
+  if (assertive.length) issues.push(`미검증 단정 분양가 ${assertive.length}건 (헤지 라벨 없음): ${assertive.join(' / ')}`);
+
   if (title) titles.set(rel, title);
   if (desc) descs.set(rel, desc);
 
@@ -146,10 +167,27 @@ function dupes(map) {
 const dupTitles = dupes(titles);
 const dupDescs = dupes(descs);
 
-const totalIssues = results.reduce((n, r) => n + r.issues.length, 0) + dupTitles.length + dupDescs.length;
+// ---- 모바일 본문 16px 게이트 (style.css 전역) ----
+const cssIssues = [];
+try {
+  const css = readFileSync(join(ROOT, 'style.css'), 'utf8');
+  const BODY_COPY = ['.section-desc', '.detail-content p', '.detail-content ul li', '.faq-item summary', '.faq-answer'];
+  for (const sel of BODY_COPY) {
+    const esc = sel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp(`(?:^|[}\\n,])\\s*${esc}\\s*\\{([^}]*)\\}`, 'g');
+    let m, minPx = Infinity;
+    while ((m = re.exec(css))) {
+      const fm = m[1].match(/font-size:\s*([\d.]+)(rem|px)/);
+      if (fm) { const px = fm[2] === 'rem' ? parseFloat(fm[1]) * 16 : parseFloat(fm[1]); minPx = Math.min(minPx, px); }
+    }
+    if (minPx !== Infinity && minPx < 16) cssIssues.push(`${sel} 본문 ${minPx}px (<16px — 모바일 가독성)`);
+  }
+} catch { /* style.css 없으면 스킵 */ }
+
+const totalIssues = results.reduce((n, r) => n + r.issues.length, 0) + dupTitles.length + dupDescs.length + cssIssues.length;
 
 if (AS_JSON) {
-  console.log(JSON.stringify({ generatedAt: new Date().toISOString(), pages: results.length, totalIssues, results, dupTitles, dupDescs }, null, 2));
+  console.log(JSON.stringify({ generatedAt: new Date().toISOString(), pages: results.length, totalIssues, results, dupTitles, dupDescs, cssIssues }, null, 2));
 } else {
   const C = { red: s => `\x1b[31m${s}\x1b[0m`, grn: s => `\x1b[32m${s}\x1b[0m`, yel: s => `\x1b[33m${s}\x1b[0m`, dim: s => `\x1b[2m${s}\x1b[0m`, b: s => `\x1b[1m${s}\x1b[0m` };
   console.log(C.b(`\n📊 TheAssetSquare SEO 자동 감사 — ${new Date().toLocaleString('ko-KR')}`));
@@ -165,6 +203,7 @@ if (AS_JSON) {
   }
   if (dupTitles.length) { console.log(C.red('⚠ 중복 title:')); dupTitles.forEach(g => console.log('  ' + g.join(' = '))); }
   if (dupDescs.length) { console.log(C.red('⚠ 중복 description:')); dupDescs.forEach(g => console.log('  ' + g.join(' = '))); }
+  if (cssIssues.length) { console.log(C.red('⚠ 모바일 본문 16px 위반:')); cssIssues.forEach(i => console.log('  ' + i)); }
   console.log(totalIssues === 0 ? C.grn('\n✅ 위반 0건 — 전 페이지 통과\n') : C.red(`\n❌ 총 ${totalIssues}건 수정 필요\n`));
 }
 
