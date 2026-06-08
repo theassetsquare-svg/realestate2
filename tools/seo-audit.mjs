@@ -42,6 +42,7 @@ function walk(dir, acc = []) {
 
 // ---- 추출 유틸 ----
 const pick = (re, html) => { const m = html.match(re); return m ? m[1].trim() : ''; };
+const normNode = (rel) => { const p = rel.replace(/^\.?\//, ''); return p === 'index.html' ? '/' : '/' + p.replace(/\.html$/, ''); };
 const meta = (name, html) => pick(new RegExp(`<meta\\s+name=["']${name}["']\\s+content=["']([^"']*)["']`, 'i'), html);
 const og   = (prop, html) => pick(new RegExp(`<meta\\s+property=["']og:${prop}["']\\s+content=["']([^"']*)["']`, 'i'), html);
 
@@ -102,6 +103,15 @@ for (const file of files) {
   // 내부 링크에 target=_blank 사용된 개수
   const internalBlank = (html.match(/<a\s+href=["'](?:\/|\.\/|[a-z0-9-]+\.html)[^"']*["'][^>]*target=["']_blank["']/gi) || []).length;
 
+  // 링크 그래프용: 자기 노드 + 내부 아웃링크(정규화) + 본진 링크 수
+  const selfNode = normNode(rel);
+  const ASSET = /\.(css|js|ico|png|svg|xml|txt|json)$/i;
+  const outLinks = [...new Set(
+    [...html.matchAll(/<a\s[^>]*href=["'](\/(?!\/)[^"'#?]*)/gi)].map(m => m[1])
+      .filter(h => !ASSET.test(h)).map(h => h.replace(/\/$/, '') || '/')
+  )].filter(t => t !== selfNode);
+  const mainLinks = (html.match(/href=["']https?:\/\/theassetsquare\.com/gi) || []).length;
+
   // 금지 전화번호
   const phoneHits = RULES.bannedPhones.reduce((n, p) => n + countOf(html, p), 0);
 
@@ -157,12 +167,21 @@ for (const file of files) {
   // (3) 상세 BreadcrumbList 필수
   if (isDetail && !/"BreadcrumbList"/.test(html)) issues.push('상세 BreadcrumbList JSON-LD 누락');
 
+  // ---- 4단계 게이트 ----
+  // (1) 다크패턴/FOMO/가짜 사회증거/카운트다운 (범용 낚시 문구 — '완판된 단지'는 거부문구라 제외)
+  const DARK = /(역대급|놓치면\s?후회|마감\s?임박|지금\s?안\s?사면|품절\s?임박|초특가|한정특가|오늘만|선착순|카운트다운|타이머|남은\s?시간|실시간\s?\d+\s?명|\d+\s?명이\s?(보고|신청)|마지막\s?기회)/g;
+  const darkHits = (text.match(DARK) || []);
+  if (darkHits.length) issues.push(`다크패턴/FOMO ${darkHits.length}건: ${[...new Set(darkHits)].join(', ')}`);
+  // (2) 본진(theassetsquare.com) 0홉 링크 필수
+  if (mainLinks === 0) issues.push('본진(theassetsquare.com) 링크 없음 (유입 동선 누락)');
+
   if (title) titles.set(rel, title);
   if (desc) descs.set(rel, desc);
 
   results.push({ rel, title, titleLen: [...title].length, desc, descLen: [...desc].length,
     canonical, ogImage, ogUrl, hasSchema, h1count, h2count, chars,
-    pname, densPrimary, densName, internalBlank, phoneHits, issues });
+    pname, densPrimary, densName, internalBlank, phoneHits, issues,
+    node: selfNode, outLinks, isDetail });
 }
 
 // ---- 중복 title/description 탐지 ----
@@ -208,10 +227,25 @@ try {
   if (/\.html<\/loc>/i.test(sm)) infraIssues.push('sitemap .html URL 잔존 — 클린 URL로');
 } catch { /* sitemap 없으면 스킵 */ }
 
-const totalIssues = results.reduce((n, r) => n + r.issues.length, 0) + dupTitles.length + dupDescs.length + cssIssues.length + infraIssues.length;
+// ---- 링크 그래프 게이트 (고아 · 상세 막다른길) ----
+const graphIssues = [];
+{
+  const inbound = {};
+  results.forEach(r => inbound[r.node] = 0);
+  for (const r of results) for (const t of r.outLinks) if (t !== r.node && inbound[t] != null) inbound[t]++;
+  for (const r of results) if (r.node !== '/' && inbound[r.node] === 0) graphIssues.push(`고아 페이지: ${r.node} (inbound 0)`);
+  const detailCount = results.filter(r => r.isDetail).length;
+  const minD = Math.min(3, Math.max(0, detailCount - 1)); // 현장 수 보정
+  for (const r of results.filter(r => r.isDetail)) {
+    const d2d = r.outLinks.filter(t => t.startsWith('/property/')).length;
+    if (d2d < minD) graphIssues.push(`콘텐츠 막다른길: ${r.node} (상세→상세 ${d2d} < ${minD})`);
+  }
+}
+
+const totalIssues = results.reduce((n, r) => n + r.issues.length, 0) + dupTitles.length + dupDescs.length + cssIssues.length + infraIssues.length + graphIssues.length;
 
 if (AS_JSON) {
-  console.log(JSON.stringify({ generatedAt: new Date().toISOString(), pages: results.length, totalIssues, results, dupTitles, dupDescs, cssIssues, infraIssues }, null, 2));
+  console.log(JSON.stringify({ generatedAt: new Date().toISOString(), pages: results.length, totalIssues, results, dupTitles, dupDescs, cssIssues, infraIssues, graphIssues }, null, 2));
 } else {
   const C = { red: s => `\x1b[31m${s}\x1b[0m`, grn: s => `\x1b[32m${s}\x1b[0m`, yel: s => `\x1b[33m${s}\x1b[0m`, dim: s => `\x1b[2m${s}\x1b[0m`, b: s => `\x1b[1m${s}\x1b[0m` };
   console.log(C.b(`\n📊 TheAssetSquare SEO 자동 감사 — ${new Date().toLocaleString('ko-KR')}`));
@@ -229,6 +263,7 @@ if (AS_JSON) {
   if (dupDescs.length) { console.log(C.red('⚠ 중복 description:')); dupDescs.forEach(g => console.log('  ' + g.join(' = '))); }
   if (cssIssues.length) { console.log(C.red('⚠ 모바일 본문 16px 위반:')); cssIssues.forEach(i => console.log('  ' + i)); }
   if (infraIssues.length) { console.log(C.red('⚠ 인프라(soft-404/sitemap) 위반:')); infraIssues.forEach(i => console.log('  ' + i)); }
+  if (graphIssues.length) { console.log(C.red('⚠ 링크 그래프(고아/막다른길) 위반:')); graphIssues.forEach(i => console.log('  ' + i)); }
   console.log(totalIssues === 0 ? C.grn('\n✅ 위반 0건 — 전 페이지 통과\n') : C.red(`\n❌ 총 ${totalIssues}건 수정 필요\n`));
 }
 
