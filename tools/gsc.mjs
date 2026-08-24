@@ -13,7 +13,7 @@
 //   node tools/gsc.mjs                       # 자동(사이트 탐색 후 query)
 //
 // 사이트 지정: 인자 또는 환경변수 GSC_SITE
-//   예) https://realestate2-71e.pages.dev/   또는   sc-domain:realestate2-71e.pages.dev
+//   예) https://m.nolcool.com/   또는   sc-domain:m.nolcool.com
 
 import crypto from 'node:crypto';
 import https from 'node:https';
@@ -22,7 +22,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DEFAULT_SITE = process.env.GSC_SITE || 'https://realestate2-71e.pages.dev/';
+const DEFAULT_SITE = process.env.GSC_SITE || 'https://m.nolcool.com/';
 const SCOPE = 'https://www.googleapis.com/auth/webmasters';
 
 function loadKey() {

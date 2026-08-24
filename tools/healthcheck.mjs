@@ -20,7 +20,7 @@ function detectBase() {
     const m = idx.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i);
     if (m) return m[1].replace(/\/$/, '');
   } catch {}
-  return 'https://realestate2-71e.pages.dev';
+  return 'https://m.nolcool.com';
 }
 const BASE = (process.argv[2] || detectBase()).replace(/\/$/, '');
 

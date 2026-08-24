@@ -13,7 +13,7 @@ import {
 import { sendEmail } from './notify.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SITE = process.env.GSC_SITE || 'https://realestate2-71e.pages.dev/';
+const SITE = process.env.GSC_SITE || 'https://m.nolcool.com/';
 const CI = process.argv.includes('--ci');
 
 function urlsFromSitemap() {

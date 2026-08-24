@@ -1,5 +1,5 @@
 {
-  "site": "https://realestate2-71e.pages.dev",
+  "site": "https://m.nolcool.com",
   "updated": "2026-06-01",
   "note": "SSOT(단일 진실원천). 청약홈·언론 교차검증 실데이터만. 미확정 수치는 source='예상'/confirmed=false. tools/update-listings.mjs 가 청약홈(DATA_GO_KR_KEY)으로 갱신.",
   "categories": [

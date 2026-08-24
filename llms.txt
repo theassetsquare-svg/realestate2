@@ -2,20 +2,20 @@
 > 2026년 6월 기준 분양 중이거나 분양 예정인 부동산분양 현장만 수록합니다. 청약홈·언론보도 교차검증 데이터. 확정 전 분양가·청약일은 '예정·예상'으로 표기. 상담·문의는 메인사이트 https://theassetsquare.com/ 에서.
 
 ## Pages
-- [홈페이지](https://realestate2-71e.pages.dev/): 2026년 6월 부동산분양 추천 현장 모음
-- [아파트분양](https://realestate2-71e.pages.dev/apartment.html): 서울·수도권 아파트 청약 가능한 곳
-- [오피스텔분양](https://realestate2-71e.pages.dev/officetel.html): 역세권 수익형 오피스텔
-- [상가분양](https://realestate2-71e.pages.dev/store.html): 유동인구 검증된 상가 투자
-- [지식산업센터분양](https://realestate2-71e.pages.dev/knowledge-center.html): 기업 입주 세제혜택
-- [토지분양](https://realestate2-71e.pages.dev/land.html): LH·SH 공공택지 매각
-- [산업단지분양](https://realestate2-71e.pages.dev/industrial.html): 국가산업단지 입주기업 모집
+- [홈페이지](https://m.nolcool.com/): 2026년 6월 부동산분양 추천 현장 모음
+- [아파트분양](https://m.nolcool.com/apartment.html): 서울·수도권 아파트 청약 가능한 곳
+- [오피스텔분양](https://m.nolcool.com/officetel.html): 역세권 수익형 오피스텔
+- [상가분양](https://m.nolcool.com/store.html): 유동인구 검증된 상가 투자
+- [지식산업센터분양](https://m.nolcool.com/knowledge-center.html): 기업 입주 세제혜택
+- [토지분양](https://m.nolcool.com/land.html): LH·SH 공공택지 매각
+- [산업단지분양](https://m.nolcool.com/industrial.html): 국가산업단지 입주기업 모집
 
 ## 2026년 6월 분양 예정 현장
-- [장위 푸르지오 마크원](https://realestate2-71e.pages.dev/property/jangwi-purgio-markone.html): 서울 성북구 장위10구역 재개발, 1,931세대, 대우건설, 6월 분양예정
-- [드파인 아르티아](https://realestate2-71e.pages.dev/property/dpine-artia-noryangjin.html): 서울 동작구 노량진2구역, 404세대 45층 랜드마크, SK에코플랜트, 6월 분양예정
-- [써밋 클라비온](https://realestate2-71e.pages.dev/property/summit-clavion-singil.html): 서울 영등포구 신길10구역, 812세대 하이엔드, 대우건설, 6월 분양예정
-- [동작 센트럴 동문 디 이스트](https://realestate2-71e.pages.dev/property/dongjak-central-dongmun.html): 서울 동작구 장승배기역 초역세권, 301세대, 동문건설, 6월 분양예정
-- [목동 윤슬자이](https://realestate2-71e.pages.dev/property/mokdong-yunseul-xi.html): 서울 양천구 목동, 약 651실 주거형 오피스텔, GS건설, 청약통장 불필요·누구나 청약, 6월 청약예정
+- [장위 푸르지오 마크원](https://m.nolcool.com/property/jangwi-purgio-markone.html): 서울 성북구 장위10구역 재개발, 1,931세대, 대우건설, 6월 분양예정
+- [드파인 아르티아](https://m.nolcool.com/property/dpine-artia-noryangjin.html): 서울 동작구 노량진2구역, 404세대 45층 랜드마크, SK에코플랜트, 6월 분양예정
+- [써밋 클라비온](https://m.nolcool.com/property/summit-clavion-singil.html): 서울 영등포구 신길10구역, 812세대 하이엔드, 대우건설, 6월 분양예정
+- [동작 센트럴 동문 디 이스트](https://m.nolcool.com/property/dongjak-central-dongmun.html): 서울 동작구 장승배기역 초역세권, 301세대, 동문건설, 6월 분양예정
+- [목동 윤슬자이](https://m.nolcool.com/property/mokdong-yunseul-xi.html): 서울 양천구 목동, 약 651실 주거형 오피스텔, GS건설, 청약통장 불필요·누구나 청약, 6월 청약예정
 
 ## 운영 주체
 더에셋스퀘어 — 부동산분양 전문 플랫폼
