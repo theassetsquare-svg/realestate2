@@ -84,7 +84,9 @@ const factTable = (facts, checked) =>
 
 export function renderPage(v, c, today) {
   const ad = AD[v.name] || null;
-  const url = `${SITE}/${v.path}`;
+  /* ★끝에 슬래시를 붙인다. Cloudflare 가 /1 → 308 → /1/ 로 넘기기 때문에
+     슬래시 없는 주소를 canonical 로 쓰면 네이버가 리다이렉트를 만난다. */
+  const url = `${SITE}/${v.path}/`;
   const og = `${SITE}/og/${v.path}.png`;
   const thumbAlt = `${v.name} ${c.thumbTopic}`;
 
@@ -169,7 +171,7 @@ ${c.reveal.map((p) => `<p>${esc(p)}</p>`).join('\n')}
 <p class="act">${esc(c.action)}</p>
 
 <div class="near"><p class="t">근처 다른 나이트</p>
-${v.near.map((n) => `<a href="/${n.path}">${esc(n.name)}</a>`).join('\n')}
+${v.near.map((n) => `<a href="/${n.path}/">${esc(n.name)}</a>`).join('\n')}
 </div>
 
 <p class="note">${esc(rules(Number(v.path)))} ${esc(unverified(Number(v.path), '그 밖의 항목'))}</p>

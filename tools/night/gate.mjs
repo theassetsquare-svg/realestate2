@@ -136,8 +136,11 @@ const BAN = ['룸살롱', '룸싸롱', '노래방', '밤문화', '유흥', '2차
     for (const m of p.html.matchAll(/<a[^>]+href="([^"]+)"/g)) {
       const h = m[1];
       if (/^(tel:|https:\/\/open\.kakao\.com)/.test(h)) continue;
-      if (!/^\/\d+$/.test(h)) { bad.push(`${p.rel} → 허용 안 된 링크 ${h}`); continue; }
-      if (!fs.existsSync(path.join(ROOT, h.slice(1), 'index.html'))) bad.push(`${p.rel} → 없는 주소 ${h}`);
+      /* ★끝에 슬래시가 있어야 한다. Cloudflare 가 /1 → 308 → /1/ 로 넘기기 때문에
+         슬래시 없는 주소를 쓰면 링크마다 리다이렉트가 한 번씩 낀다. */
+      if (!/^\/\d+\/$/.test(h)) { bad.push(`${p.rel} → 허용 안 된 링크 ${h}`); continue; }
+      const dir = h.replace(/^\//, '').replace(/\/$/, '');
+      if (!fs.existsSync(path.join(ROOT, dir, 'index.html'))) bad.push(`${p.rel} → 없는 주소 ${h}`);
     }
   }
   if (bad.length) fail('G7', `링크 문제 ${bad.length}건`, bad);
