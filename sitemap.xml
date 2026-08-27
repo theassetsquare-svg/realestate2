@@ -53,4 +53,10 @@
   <url><loc>https://m.nolcool.com/gwangju-cheomdan-night/</loc><lastmod>2026-08-26</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://m.nolcool.com/jeju-night/</loc><lastmod>2026-08-26</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 <url><loc>https://m.nolcool.com/night/</loc><lastmod>2026-08-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url>
+    <loc>https://m.nolcool.com/demand-analysis/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
